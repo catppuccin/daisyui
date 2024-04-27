@@ -1,0 +1,36 @@
+{
+  "name": "daisyui",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "🌼 Soothing pastel theme for daisyui",
+  "author": "lime <liumingxun@yeah.net>",
+  "license": "MIT",
+  "keywords": [
+    "catppuccin",
+    "theme",
+    "daisyui"
+  ],
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.cts",
+  "files": [
+    "./dist/"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint:fix": "eslint . --fix ",
+    "test": "vitest",
+    "release": "bumpp && npm publish"
+  },
+  "peerDependencies": {
+    "daisyui": "^4.10.2",
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.16.0",
+    "@catppuccin/palette": "^1.1.1",
+    "eslint": "^8.1.1",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.2"
+  }
+}
