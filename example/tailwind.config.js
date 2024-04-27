@@ -1,4 +1,4 @@
-import catppuccin from 'catppuccin-daisyui'
+import catppuccin from '@catppuccin/daisyui'
 
 // eslint-disable-next-line no-console
 console.log(['latte', 'frappe', 'macchiato', 'mocha'].map(theme => catppuccin(theme)))

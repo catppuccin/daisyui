@@ -1,55 +1,87 @@
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin for <a href="https://github.com/liumingxun/catppuccin-daisyui">daisyUI</a>
+	Catppuccin for <a href="https://github.com/liumingxun/daisyui">daisyUI</a>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
-	<a href="https://github.com/liumingxun/catppuccin-daisyui/stargazers"><img src="https://img.shields.io/github/stars/liumingxun/catppuccin-daisyui?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/liumingxun/catppuccin-daisyui/issues"><img src="https://img.shields.io/github/issues/liumingxun/catppuccin-daisyui?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/liumingxun/catppuccin-daisyui/contributors"><img src="https://img.shields.io/github/contributors/liumingxun/catppuccin-daisyui?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/liumingxun/daisyui/stargazers"><img src="https://img.shields.io/github/stars/liumingxun/daisyui?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/liumingxun/daisyui/issues"><img src="https://img.shields.io/github/issues/liumingxun/daisyui?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/liumingxun/daisyui/contributors"><img src="https://img.shields.io/github/contributors/liumingxun/daisyui?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/preview.webp"/>
+	<img src="assets/previews/preview.webp"/>
 </p>
 
 ## Previews
 
 <details>
 <summary>🌻 Latte</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/latte.webp"/>
+<img src="assets/previews/latte.webp"/>
 </details>
 <details>
 <summary>🪴 Frappé</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/frappe.webp"/>
+<img src="assets/previews/frappe.webp"/>
 </details>
 <details>
 <summary>🌺 Macchiato</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/macchiato.webp"/>
+<img src="assets/previews/macchiato.webp"/>
 </details>
 <details>
 <summary>🌿 Mocha</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/previews/mocha.webp"/>
+<img src="assets/previews/mocha.webp"/>
 </details>
 
 ## Usage
 
 ### Installation
 
+| **npm**                            | **pnpm**                            | **yarn**                            |
+| ---------------------------------- | ----------------------------------- | ----------------------------------- |
+| npm install -D @catppuccin/daisyui | pnpm install -D @catppuccin/daisyui | yarn install -D @catppuccin/daisyui |
 
+### Configuration
 
-1. Clone this repository locally
-2. Open the app's settings
-3. Select `import theme` and browse to where you cloned Catppuccin
-4. Select it
+```javascript
+// tailwind.config.js
+import catppuccin from "@catppuccin/daisyui";
 
+module.exports = {
+  content: ["./src/**/*.{js,ts}", "index.html"],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      "light",
+      catppuccin("latte"),
+      catppuccin("frappe"),
+      catppuccin("macchiato"),
+      catppuccin("mocha"),
+    ],
+  },
+};
+```
+
+### Using
+
+```html
+<div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-8">
+  <button class="btn">Default</button>
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-secondary">Secondary</button>
+  <button class="btn btn-accent">Accent</button>
+  <button class="btn btn-info">Info</button>
+  <button class="btn btn-success">Success</button>
+  <button class="btn btn-warning">Warning</button>
+  <button class="btn btn-error">Error</button>
+</div>
+```
+You can find the example in the `example` floder.
 
 ## 💝 Thanks to
 
 - [Liumingxun](https://github.com/Liumingxun)
-
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
