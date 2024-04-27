@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   clean: true,
   dts: true,
-  format: 'cjs',
+  format: ['cjs', 'esm'],
   target: 'node16',
   esbuildOptions: (options) => {
     options.footer = {
