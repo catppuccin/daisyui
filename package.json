@@ -20,7 +20,7 @@
     "build": "tsup",
     "lint:fix": "eslint . --fix ",
     "test": "vitest",
-    "release": "bumpp && npm publish"
+    "release": "npm publish"
   },
   "peerDependencies": {
     "daisyui": "^4.10.2",

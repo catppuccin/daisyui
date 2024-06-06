@@ -9,9 +9,9 @@ module.exports = {
   daisyui: {
     themes: [
       'light',
-      catppuccin('latte'),
-      catppuccin('frappe'),
-      catppuccin('macchiato'),
+      catppuccin('latte', 'sky'),
+      catppuccin('frappe', 'yellow'),
+      catppuccin('macchiato', 'peach'),
       catppuccin('mocha'),
     ],
   },

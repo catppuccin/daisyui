@@ -1,4 +1,4 @@
-import { type FlavorName, flavorEntries } from '@catppuccin/palette'
+import { type AccentName, type FlavorName, flavorEntries } from '@catppuccin/palette'
 import type { CustomTheme } from 'daisyui'
 
 const themeKeys = [
@@ -34,7 +34,7 @@ const themeKeys = [
   'warning-content',
 ] as const
 
-function createFlavor(theme: FlavorName): CustomTheme {
+function createFlavor(theme: FlavorName, accent?: AccentName): CustomTheme {
   const palette = flavorEntries.find(([name]) => name === theme)?.[1]
 
   if (!palette)
@@ -46,16 +46,16 @@ function createFlavor(theme: FlavorName): CustomTheme {
       'base-100': palette.colors.base.hex,
       'primary': palette.colors.lavender.hex,
       'secondary': palette.colors.subtext1.hex,
-      'accent': palette.colors.surface2.hex,
+      'accent': accent ? palette.colors[accent].hex : palette.colors.rosewater.hex,
       'neutral': palette.colors.overlay1.hex,
       'success': palette.colors.green.hex,
       'warning': palette.colors.yellow.hex,
       'error': palette.colors.red.hex,
-      'info': palette.colors.rosewater.hex,
+      'info': palette.colors.blue.hex,
     },
   }
   return daisyTheme
 }
 
-export { type FlavorName }
+export type { FlavorName, AccentName }
 export default createFlavor

@@ -54,9 +54,10 @@ module.exports = {
   daisyui: {
     themes: [
       "light",
-      catppuccin("latte"),
-      catppuccin("frappe"),
-      catppuccin("macchiato"),
+      // You can pick a rainbow color as your accent color, or not at all
+      catppuccin("latte", "sky"),
+      catppuccin("frappe", "yellow"),
+      catppuccin("macchiato", "peach"),
       catppuccin("mocha"),
     ],
   },
