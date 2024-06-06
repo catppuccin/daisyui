@@ -18,8 +18,9 @@
   ],
   "scripts": {
     "build": "tsup",
-    "lint:fix": "eslint . --fix ",
+    "lint:fix": "eslint . --fix",
     "test": "vitest",
+    "prepublishOnly": "pnpm build",
     "release": "npm publish"
   },
   "peerDependencies": {
