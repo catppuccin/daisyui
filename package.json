@@ -2,6 +2,7 @@
   "name": "@catppuccin/daisyui",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.2.0",
   "description": "🌼 Soothing pastel theme for daisyui",
   "author": "lime <liumingxun@yeah.net>",
   "license": "MIT",
@@ -20,7 +21,7 @@
     "build": "tsup",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
-    "prepublishOnly": "npm build",
+    "prepublishOnly": "pnpm run build",
     "publish": "npm publish"
   },
   "peerDependencies": {
