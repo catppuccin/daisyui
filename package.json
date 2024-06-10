@@ -20,8 +20,8 @@
     "build": "tsup",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
-    "prepublishOnly": "pnpm build",
-    "release": "npm publish"
+    "prepublishOnly": "npm build",
+    "publish": "npm publish"
   },
   "peerDependencies": {
     "daisyui": "^4.10.2",
