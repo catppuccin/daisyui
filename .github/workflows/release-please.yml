@@ -5,19 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      force_release:
-        description: Force a release
-        required: true
-        type: boolean
-      force_release_version:
-        description: Version of the release
-        required: false
-        type: string
 
 permissions:
   contents: write
-  id-token: write
   pull-requests: write
 
 jobs:
@@ -28,15 +18,13 @@ jobs:
         id: release
         with:
           release-type: node
-          skip-github-pull-request: true
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
 
   release:
     runs-on: ubuntu-latest
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created || github.event.inputs.force_release }}
+    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - uses: actions/checkout@v4
 
@@ -52,10 +40,3 @@ jobs:
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GH Release
-        uses: softprops/action-gh-release@v2
-        with:
-          generate_release_notes: true
-          append_body: |
-            NPM: https://www.npmjs.com/package/@catppuccin/daisyui/v/${{needs.release-please.outputs.tag_name || inputs.force_release_version}}
