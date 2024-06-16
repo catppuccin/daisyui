@@ -59,7 +59,7 @@ interface DefaultColorOptions {
 
 type CustomColorOptions = Partial<typeof defaultColorOptions>
 
-function setSemanticColors(options: CustomColorOptions = {}): typeof defaultColorOptions {
+function getSemanticColors(options: CustomColorOptions = {}): typeof defaultColorOptions {
   return { ...defaultColorOptions, ...options }
 }
 
@@ -69,7 +69,7 @@ function createFlavor(theme: FlavorName, customColors?: CustomColorOptions): Cus
   if (!palette)
     throw new Error(`Flavor ${theme} not found!`)
 
-  const { primary, secondary, accent, neutral, success, warning, error, info } = setSemanticColors(customColors)
+  const { primary, secondary, accent, neutral, success, warning, error, info } = getSemanticColors(customColors)
 
   const daisyTheme: Record<string, Partial<Record<typeof themeKeys[number], string>>> = {
     [theme]: {
