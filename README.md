@@ -68,7 +68,7 @@ module.exports = {
 - Latte, Frappe, Macchiato, Mocha
 
 #### Customizable Semantic Colors
-- **Optional fields:** primary, secondary, accent, neutral, success, warning, error, info
+- **Optional fields:** primary, secondary, accent, neutral, info
 
 #### Available Catppuccin Color Values
 - **Accent Colors:** rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender
