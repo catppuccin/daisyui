@@ -40,21 +40,15 @@ const defaultColorOptions: DefaultColorOptions = {
   secondary: 'subtext1',
   accent: 'rosewater',
   neutral: 'overlay1',
-  success: 'green',
-  warning: 'yellow',
-  error: 'red',
   info: 'blue',
 }
 
 interface DefaultColorOptions {
-  primary: AccentName | MonochromaticName
+  primary: AccentName
   secondary: AccentName | MonochromaticName
-  accent: AccentName | MonochromaticName
-  neutral: AccentName | MonochromaticName
-  success: AccentName | MonochromaticName
-  warning: AccentName | MonochromaticName
-  error: AccentName | MonochromaticName
-  info: AccentName | MonochromaticName
+  accent: AccentName
+  neutral: MonochromaticName
+  info: AccentName
 }
 
 type CustomColorOptions = Partial<typeof defaultColorOptions>
@@ -69,7 +63,7 @@ function createFlavor(theme: FlavorName, customColors?: CustomColorOptions): Cus
   if (!palette)
     throw new Error(`Flavor ${theme} not found!`)
 
-  const { primary, secondary, accent, neutral, success, warning, error, info } = getSemanticColors(customColors)
+  const { primary, secondary, accent, neutral, info } = getSemanticColors(customColors)
 
   const daisyTheme: Record<string, Partial<Record<typeof themeKeys[number], string>>> = {
     [theme]: {
@@ -79,9 +73,9 @@ function createFlavor(theme: FlavorName, customColors?: CustomColorOptions): Cus
       'secondary': palette.colors[secondary].hex,
       'accent': palette.colors[accent].hex,
       'neutral': palette.colors[neutral].hex,
-      'success': palette.colors[success].hex,
-      'warning': palette.colors[warning].hex,
-      'error': palette.colors[error].hex,
+      'success': palette.colors.green.hex,
+      'warning': palette.colors.yellow.hex,
+      'error': palette.colors.red.hex,
       'info': palette.colors[info].hex,
     },
   }

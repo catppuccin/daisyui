@@ -56,7 +56,7 @@ module.exports = {
       "light",
       // You can simply select a catppuccin flavor with sane default colors
       catppuccin("mocha"),
-      // Or you can optionally customize your semantic colors with catppuccin defined color values
+      // Or you can optionally customize your semantic colors with catppuccin defined color values, details on available values below
       // Values not explicitly defined will use default values
       catppuccin("latte", {primary: 'sky', secondary: 'rosewater'}),
     ],
@@ -67,12 +67,15 @@ module.exports = {
 #### Available Catppuccin Flavors
 - Latte, Frappe, Macchiato, Mocha
 
-#### Available Catppuccin Color Values
-- **Accent Colors:** rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender
-- **Monochromatic Colors:** text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust
-
 #### Customizable Semantic Colors
 - **Optional fields:** primary, secondary, accent, neutral, success, warning, error, info
+
+#### Available Catppuccin Color Values
+- **Accent Colors:** rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender
+  - Can be assigned to `primary`, `secondary`, `accent` and `info` semantic color values
+- **Monochromatic Colors:** text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust
+  - Can be assigned to `secondary` and `neutral` semantic colors values
+
 
 ### Using
 
