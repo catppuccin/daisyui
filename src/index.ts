@@ -1,4 +1,5 @@
-import { type AccentName, type FlavorName, flavorEntries } from '@catppuccin/palette'
+import type { AccentName, FlavorName, MonochromaticName } from '@catppuccin/palette'
+import { flavorEntries } from '@catppuccin/palette'
 import type { CustomTheme } from 'daisyui'
 
 const themeKeys = [
@@ -34,28 +35,70 @@ const themeKeys = [
   'warning-content',
 ] as const
 
-function createFlavor(theme: FlavorName, accent?: AccentName): CustomTheme {
+const defaultColorOptions: ColorOptions = {
+  primary: 'lavender',
+  secondary: 'subtext1',
+  accent: 'rosewater',
+  neutral: 'overlay1',
+  success: 'green',
+  warning: 'yellow',
+  error: 'red',
+  info: 'blue',
+}
+
+interface ColorOptions {
+  primary: AccentName
+  secondary: AccentName | MonochromaticName
+  accent: AccentName
+  neutral: MonochromaticName
+  success: 'green'
+  warning: 'yellow'
+  error: 'red'
+  info: AccentName
+}
+
+type CustomColorOptions = Partial<Omit<ColorOptions, 'success' | 'warning' | 'error'>>
+
+function getSemanticColors(options: CustomColorOptions = {}): ColorOptions {
+  return { ...defaultColorOptions, ...options }
+}
+
+function createFlavor(theme: FlavorName, accent?: AccentName): CustomTheme
+function createFlavor(theme: FlavorName, customColors?: CustomColorOptions): CustomTheme
+function createFlavor(theme: FlavorName, options?: CustomColorOptions | AccentName): CustomTheme {
   const palette = flavorEntries.find(([name]) => name === theme)?.[1]
 
   if (!palette)
     throw new Error(`Flavor ${theme} not found!`)
 
+  let customColors: ColorOptions
+  if (typeof options === 'string') {
+    customColors = getSemanticColors({
+      accent: options,
+    })
+  }
+  else {
+    customColors = getSemanticColors(options)
+  }
+
+  const { primary, secondary, accent, neutral, info, success, error, warning } = customColors
+
   const daisyTheme: Record<string, Partial<Record<typeof themeKeys[number], string>>> = {
     [theme]: {
       'color-scheme': palette.dark ? 'dark' : 'light',
       'base-100': palette.colors.base.hex,
-      'primary': palette.colors.lavender.hex,
-      'secondary': palette.colors.subtext1.hex,
-      'accent': accent ? palette.colors[accent].hex : palette.colors.rosewater.hex,
-      'neutral': palette.colors.overlay1.hex,
-      'success': palette.colors.green.hex,
-      'warning': palette.colors.yellow.hex,
-      'error': palette.colors.red.hex,
-      'info': palette.colors.blue.hex,
+      'primary': palette.colors[primary].hex,
+      'secondary': palette.colors[secondary].hex,
+      'accent': palette.colors[accent].hex,
+      'neutral': palette.colors[neutral].hex,
+      'success': palette.colors[success].hex,
+      'warning': palette.colors[warning].hex,
+      'error': palette.colors[error].hex,
+      'info': palette.colors[info].hex,
     },
   }
   return daisyTheme
 }
 
-export type { FlavorName, AccentName }
+export type { FlavorName, AccentName, MonochromaticName }
 export default createFlavor

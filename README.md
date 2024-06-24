@@ -6,9 +6,9 @@
 </h3>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/daisyui/stargazers"><img src="https://img.shields.io/github/stars/liumingxun/daisyui?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/daisyui/issues"><img src="https://img.shields.io/github/issues/liumingxun/daisyui?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/daisyui/contributors"><img src="https://img.shields.io/github/contributors/liumingxun/daisyui?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/daisyui/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/daisyui?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/daisyui/issues"><img src="https://img.shields.io/github/issues/catppuccin/daisyui?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/daisyui/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/daisyui?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -46,23 +46,41 @@
 
 ```javascript
 // tailwind.config.js
-import catppuccin from "@catppuccin/daisyui";
+import catppuccin from '@catppuccin/daisyui'
 
 module.exports = {
-  content: ["./src/**/*.{js,ts}", "index.html"],
-  plugins: [require("daisyui")],
+  content: ['./src/**/*.{js,ts}', 'index.html'],
+  plugins: [require('daisyui')],
   daisyui: {
     themes: [
-      "light",
-      // You can pick a rainbow color as your accent color, or not at all
-      catppuccin("latte", "sky"),
-      catppuccin("frappe", "yellow"),
-      catppuccin("macchiato", "peach"),
-      catppuccin("mocha"),
+      'light',
+      // You can simply select a catppuccin flavor with sane default colors
+      catppuccin('latte'),
+      // Or you can optionally specify accent colors
+      catppuccin('frappe', 'pink'),
+      // Or you can optionally customize more semantic colors
+      catppuccin('macchiato', { primary: 'maroon' }),
+      // Values not explicitly defined will use default values
+      catppuccin("mocha", { primary: 'sky', secondary: 'rosewater' }),
     ],
   },
 };
 ```
+
+#### Available Catppuccin Flavors
+- Latte, Frappe, Macchiato, Mocha
+
+#### Customizable Semantic Colors
+- **Optional fields:** primary, secondary, accent, neutral, info
+
+Note: We do not recommend changing any colors other than the `primary` and `accent`, although we provide a way to do so
+
+#### Available Catppuccin Color Values
+- **Accent Colors:** rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender
+  - Can be assigned to `primary`, `secondary`, `accent` and `info` semantic color values
+- **Monochromatic Colors:** text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust
+  - Can be assigned to `secondary` and `neutral` semantic colors values
+
 
 ### Using
 

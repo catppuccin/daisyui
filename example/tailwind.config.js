@@ -9,10 +9,14 @@ module.exports = {
   daisyui: {
     themes: [
       'light',
-      catppuccin('latte', 'sky'),
-      catppuccin('frappe', 'yellow'),
-      catppuccin('macchiato', 'peach'),
-      catppuccin('mocha'),
+      // You can simply select a catppuccin flavor with sane default colors
+      catppuccin('latte'),
+      // Or you can optionally specify accent colors
+      catppuccin('frappe', 'pink'),
+      // Or you can optionally customize more semantic colors
+      catppuccin('macchiato', { primary: 'maroon' }),
+      // Values not explicitly defined will use default values
+      catppuccin('mocha', { primary: 'sky', secondary: 'rosewater' }),
     ],
   },
 }
