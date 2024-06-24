@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/catppuccin/daisyui/compare/v1.1.0...v1.1.1) (2024-06-24)
+
+
+### Miscellaneous Chores
+
+* release 1.1.1 ([#8](https://github.com/catppuccin/daisyui/issues/8)) ([03c0a56](https://github.com/catppuccin/daisyui/commit/03c0a561dc9ff87491c053bda9f3985bff764d15))
+
 ## [1.1.0](https://github.com/catppuccin/daisyui/compare/v1.0.0...v1.1.0) (2024-06-24)
 
 ### Continuous Integration
