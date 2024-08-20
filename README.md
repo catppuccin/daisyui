@@ -96,7 +96,7 @@ Note: We do not recommend changing any colors other than the `primary` and `acce
   <button class="btn btn-error">Error</button>
 </div>
 ```
-You can find the example in the `example` floder.
+You can find the example in the `example` folder.
 
 ## 💝 Thanks to
 
