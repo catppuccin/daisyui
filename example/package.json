@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@catppuccin/daisyui": "file:../",
+    "@catppuccin/daisyui": "workspace:../",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.10.2",
     "postcss": "^8.4.38",
