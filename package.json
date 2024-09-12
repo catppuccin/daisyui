@@ -30,9 +30,11 @@
   "peerDependencies": {
     "daisyui": "^4.10.2"
   },
+  "dependencies": {
+    "@catppuccin/palette": "^1.1.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.0.0",
-    "@catppuccin/palette": "^1.1.1",
     "eslint": "^8.1.1",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",

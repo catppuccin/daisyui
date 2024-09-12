@@ -10,6 +10,6 @@ ${
     <input type="radio" ${idx === 0 ? 'checked' : ''} name="theme-radios" class="radio theme-controller" value="${theme}"/>
   </label>
 </div>`,
-).join('\n')}
+  ).join('\n')}
 </div>
 `
