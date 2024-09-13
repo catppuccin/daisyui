@@ -1,5 +1,5 @@
-import type { AccentName, FlavorName, MonochromaticName } from '@catppuccin/palette'
 import { flavorEntries } from '@catppuccin/palette'
+import type { AccentName, FlavorName, MonochromaticName } from '@catppuccin/palette'
 import type { CustomTheme } from 'daisyui'
 
 const themeKeys = [
@@ -100,5 +100,5 @@ function createFlavor(theme: FlavorName, options?: CustomColorOptions | AccentNa
   return daisyTheme
 }
 
-export type { FlavorName, AccentName, MonochromaticName }
+export type { AccentName, FlavorName, MonochromaticName }
 export default createFlavor
