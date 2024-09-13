@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/catppuccin/daisyui/compare/v1.1.1...v1.1.2) (2024-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update export type's deps ([#31](https://github.com/catppuccin/daisyui/issues/31)) ([8cb3a67](https://github.com/catppuccin/daisyui/commit/8cb3a672173460e0fa3e4001cbcccb266f88d036))
+* **typo:** correct "floder" ([#10](https://github.com/catppuccin/daisyui/issues/10)) ([8161ede](https://github.com/catppuccin/daisyui/commit/8161edea01be235237db551459008164ff091247))
+
 ## [1.1.1](https://github.com/catppuccin/daisyui/compare/v1.1.0...v1.1.1) (2024-06-24)
 
 
