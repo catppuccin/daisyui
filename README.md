@@ -52,8 +52,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts}', 'index.html'],
   plugins: [require('daisyui')],
   daisyui: {
+    // Top value under this array will be used as the default theme
+    // You can use saadeghi/theme-change to switch between themes
     themes: [
-      'light',
       // You can simply select a catppuccin flavor with sane default colors
       catppuccin('latte'),
       // Or you can optionally specify accent colors
@@ -61,7 +62,9 @@ module.exports = {
       // Or you can optionally customize more semantic colors
       catppuccin('macchiato', { primary: 'maroon' }),
       // Values not explicitly defined will use default values
-      catppuccin("mocha", { primary: 'sky', secondary: 'rosewater' }),
+      catppuccin('mocha', { primary: 'sky', secondary: 'rosewater' }),
+      // Fallback to default theme
+      'light',
     ],
   },
 };
