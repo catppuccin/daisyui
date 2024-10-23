@@ -71,21 +71,25 @@ module.exports = {
 ```
 
 #### Available Catppuccin Flavors
+
 - Latte, Frappe, Macchiato, Mocha
 
 #### Customizable Semantic Colors
+
 - **Optional fields:** primary, secondary, accent, neutral, info
 
 Note: We do not recommend changing any colors other than the `primary` and `accent`, although we provide a way to do so
 
 #### Available Catppuccin Color Values
+
 - **Accent Colors:** rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender
   - Can be assigned to `primary`, `secondary`, `accent` and `info` semantic color values
 - **Monochromatic Colors:** text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust
   - Can be assigned to `secondary` and `neutral` semantic colors values
 
+### Example
 
-### Using
+You can use the following HTML to test the theme:
 
 ```html
 <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-8">
@@ -99,6 +103,7 @@ Note: We do not recommend changing any colors other than the `primary` and `acce
   <button class="btn btn-error">Error</button>
 </div>
 ```
+
 You can find the example in the `example` folder.
 
 ## 💝 Thanks to
