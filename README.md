@@ -42,6 +42,8 @@
 | ---------------------------------- | ----------------------------------- | ----------------------------------- |
 | npm install -D @catppuccin/daisyui | pnpm install -D @catppuccin/daisyui | yarn install -D @catppuccin/daisyui |
 
+Or try it with [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@catppuccin/daisyui/dist/catppuccin.min.css)! See [this example](https://codesandbox.io/p/sandbox/rqclg3) for more details.
+
 ### Configuration
 
 ```javascript
