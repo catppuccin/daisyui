@@ -1,7 +1,7 @@
 {
   "name": "@catppuccin/daisyui",
   "type": "module",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "packageManager": "pnpm@9.10.0",
   "description": "🌼 Soothing pastel theme for daisyui",
   "author": "lime <liumingxun@yeah.net>",
