@@ -11,6 +11,7 @@
     "theme",
     "daisyui"
   ],
+  "browser": "dist/catppuccin.css",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,7 +19,7 @@
     "./dist/"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node ./src/generate.cjs",
     "dev:root": "tsup --watch",
     "dev:example": "pnpm -F example dev",
     "dev": "pnpm run /^dev:.*/",
@@ -31,10 +32,11 @@
     "daisyui": "^4.10.2"
   },
   "dependencies": {
-    "@catppuccin/palette": "^1.1.1"
+    "@catppuccin/palette": "^1.7.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.0.0",
+    "@types/node": "^20",
     "eslint": "^9.0.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
