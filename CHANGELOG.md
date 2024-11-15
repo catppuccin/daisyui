@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/catppuccin/daisyui/compare/v1.1.2...v1.2.0) (2024-11-15)
+
+
+### Features
+
+* generate css for CDN usage ([#42](https://github.com/catppuccin/daisyui/issues/42)) ([c03cb0e](https://github.com/catppuccin/daisyui/commit/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8))
+
 ## [1.1.2](https://github.com/catppuccin/daisyui/compare/v1.1.1...v1.1.2) (2024-09-13)
 
 
