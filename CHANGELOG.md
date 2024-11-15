@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/catppuccin/daisyui/compare/v1.2.0...v1.2.1) (2024-11-15)
+
+
+### Bug Fixes
+
+* regenerate `pnpm-lock.yaml` ([#44](https://github.com/catppuccin/daisyui/issues/44)) ([446831c](https://github.com/catppuccin/daisyui/commit/446831c7f3d17334b2e3a0f8d7ffb0d3c9706306))
+
 ## [1.2.0](https://github.com/catppuccin/daisyui/compare/v1.1.2...v1.2.0) (2024-11-15)
 
 
