@@ -35,7 +35,7 @@
     "@catppuccin/palette": "^1.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.0.0",
+    "@antfu/eslint-config": "^4.0.0",
     "@types/node": "^20",
     "eslint": "^9.0.0",
     "tsup": "^8.0.2",
