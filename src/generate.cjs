@@ -1,5 +1,5 @@
+const { appendFile } = require('node:fs/promises')
 const { flavors } = require('@catppuccin/palette')
-const { appendFile } = require('fs/promises')
 const daisyFuncs = require('daisyui/src/theming/functions.js')
 
 const defaultColorConfig = Object.fromEntries(
@@ -17,12 +17,12 @@ const defaultColorConfig = Object.fromEntries(
         'warning': flavor.colors.yellow.hex,
         'error': flavor.colors.red.hex,
         'info': flavor.colors.blue.hex,
-      }
+      },
     ]
-  })
+  }),
 )
 
 Object.entries(defaultColorConfig).forEach(([name, colors]) => {
-  const style = JSON.stringify(daisyFuncs.convertColorFormat(colors)).replace(/"/g, "").replace(/,/g, ';')
+  const style = JSON.stringify(daisyFuncs.convertColorFormat(colors)).replace(/"/g, '').replace(/,/g, ';')
   appendFile('dist/catppuccin.css', `[data-theme=${name}] ${style}\n`)
 })

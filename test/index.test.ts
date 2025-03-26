@@ -1,8 +1,8 @@
+import type { FlavorName } from '@catppuccin/palette'
+import type { CustomTheme } from 'daisyui'
 import { flavors } from '@catppuccin/palette'
 import themes from 'daisyui/src/theming/themes'
 import { describe, expect, expectTypeOf, it } from 'vitest'
-import type { FlavorName } from '@catppuccin/palette'
-import type { CustomTheme } from 'daisyui'
 import catppuccin from '../src'
 
 describe('daisyui', () => {

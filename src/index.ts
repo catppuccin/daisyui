@@ -1,6 +1,6 @@
-import { flavorEntries } from '@catppuccin/palette'
 import type { AccentName, FlavorName, MonochromaticName } from '@catppuccin/palette'
 import type { CustomTheme } from 'daisyui'
+import { flavorEntries } from '@catppuccin/palette'
 
 const themeKeys = [
   '--animation-btn',
