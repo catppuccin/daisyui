@@ -2,6 +2,7 @@ import type { AccentName, FlavorName, MonochromaticName } from '@catppuccin/pale
 import type { CustomTheme } from 'daisyui'
 import { flavorEntries } from '@catppuccin/palette'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const themeKeys = [
   '--animation-btn',
   '--animation-input',
