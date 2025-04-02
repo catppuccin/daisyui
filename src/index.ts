@@ -1,53 +1,56 @@
-import type { AccentName, FlavorName, MonochromaticName } from '@catppuccin/palette'
-import type { CustomTheme } from 'daisyui'
-import { flavorEntries } from '@catppuccin/palette'
+import type { AccentName, ColorName, FlavorName, MonochromaticName } from '@catppuccin/palette'
+import type themes from 'daisyui/theme/object'
+import { flavors } from '@catppuccin/palette'
+import daisyuiThemePlugin from 'daisyui/theme'
+import plugin from 'tailwindcss/plugin'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
-const themeKeys = [
-  '--animation-btn',
-  '--animation-input',
-  '--btn-focus-scale',
-  '--rounded-badge',
-  '--rounded-box',
-  '--rounded-btn',
-  '--tab-border',
-  '--tab-radius',
-  'accent',
-  'accent-content',
-  'base-100',
-  'base-200',
-  'base-300',
-  'base-content',
-  'color-scheme',
-  'error',
-  'error-content',
-  'fontFamily',
-  'info',
-  'info-content',
-  'neutral',
-  'neutral-content',
-  'primary',
-  'primary-content',
-  'secondary',
-  'secondary-content',
-  'success',
-  'success-content',
-  'warning',
-  'warning-content',
-] as const
-
-const defaultColorOptions: ColorOptions = {
-  primary: 'lavender',
-  secondary: 'subtext1',
-  accent: 'rosewater',
-  neutral: 'overlay1',
-  success: 'green',
-  warning: 'yellow',
-  error: 'red',
-  info: 'blue',
+interface DaisyuiOptions {
+  'isDefault'?: boolean
+  'prefersdark'?: boolean
+  'color-scheme'?: string
+  'root'?: string
 }
 
-interface ColorOptions {
+type Theme = typeof themes[keyof typeof themes]
+
+const defaultTheme: Theme = {
+  // Colors
+  'color-scheme': 'normal',
+  '--color-primary': 'lavender',
+  '--color-primary-content': 'text',
+  '--color-secondary': 'subtext1',
+  '--color-secondary-content': 'text',
+  '--color-accent': 'rosewater',
+  '--color-accent-content': 'text',
+  '--color-neutral': 'overlay1',
+  '--color-neutral-content': 'text',
+  '--color-success': 'green',
+  '--color-success-content': 'text',
+  '--color-warning': 'yellow',
+  '--color-warning-content': 'text',
+  '--color-error': 'red',
+  '--color-error-content': 'text',
+  '--color-info': 'blue',
+  '--color-info-content': 'text',
+  '--color-base-100': 'base',
+  '--color-base-200': 'mantle',
+  '--color-base-300': 'crust',
+  '--color-base-content': 'subtext1',
+  // Radius
+  '--radius-selector': '0.75rem',
+  '--radius-field': '0.5rem',
+  '--radius-box': '1rem',
+  // Sizes
+  '--size-field': '0.25rem',
+  '--size-selector': '0.5rem',
+  '--border': '1px',
+  // Effects
+  '--depth': '1',
+  '--noise': '0',
+}
+
+interface ThemeOptions {
+  [key: string]: ColorName
   primary: AccentName
   secondary: AccentName | MonochromaticName
   accent: AccentName
@@ -58,48 +61,43 @@ interface ColorOptions {
   info: AccentName
 }
 
-type CustomColorOptions = Partial<Omit<ColorOptions, 'success' | 'warning' | 'error'>>
+type CustomThemeOptions = Partial<Omit<ThemeOptions, 'success' | 'warning' | 'error'>> & Record<string, string>
 
-function getSemanticColors(options: CustomColorOptions = {}): ColorOptions {
-  return { ...defaultColorOptions, ...options }
+function mergeTheme(themeName: FlavorName, options: CustomThemeOptions = {}) {
+  const theme: Theme = {
+    ...defaultTheme,
+    ...Object.keys(options).reduce<Record<string, string>>((acc, key) => {
+      acc[`--color-${key}`] = flavors[themeName].colors[options[key]].hex
+      return acc
+    }, {}),
+  }
+  return theme
 }
 
-function createFlavor(theme: FlavorName, accent?: AccentName): CustomTheme
-function createFlavor(theme: FlavorName, customColors?: CustomColorOptions): CustomTheme
-function createFlavor(theme: FlavorName, options?: CustomColorOptions | AccentName): CustomTheme {
-  const palette = flavorEntries.find(([name]) => name === theme)?.[1]
+function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyuiOptions?: DaisyuiOptions): any
+function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyuiOptions?: DaisyuiOptions): any
+function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyuiOptions = {}): any {
+  let theme: Theme
 
-  if (!palette)
-    throw new Error(`Flavor ${theme} not found!`)
-
-  let customColors: ColorOptions
   if (typeof options === 'string') {
-    customColors = getSemanticColors({
+    theme = mergeTheme(themeName, {
       accent: options,
     })
   }
   else {
-    customColors = getSemanticColors(options)
+    theme = mergeTheme(themeName, options)
   }
 
-  const { primary, secondary, accent, neutral, info, success, error, warning } = customColors
-
-  const daisyTheme: Record<string, Partial<Record<typeof themeKeys[number], string>>> = {
-    [theme]: {
-      'color-scheme': palette.dark ? 'dark' : 'light',
-      'base-100': palette.colors.base.hex,
-      'primary': palette.colors[primary].hex,
-      'secondary': palette.colors[secondary].hex,
-      'accent': palette.colors[accent].hex,
-      'neutral': palette.colors[neutral].hex,
-      'success': palette.colors[success].hex,
-      'warning': palette.colors[warning].hex,
-      'error': palette.colors[error].hex,
-      'info': palette.colors[info].hex,
-    },
-  }
-  return daisyTheme
+  return plugin.withOptions(() => {
+    return ({ addBase }) => {
+      daisyuiThemePlugin({
+        name: themeName,
+        ...daisyuiOptions,
+        ...theme,
+      })({ addBase })
+    }
+  })
 }
 
 export type { AccentName, FlavorName, MonochromaticName }
-export default createFlavor
+export { createCatppuccinPlugin, createCatppuccinPlugin as default }
