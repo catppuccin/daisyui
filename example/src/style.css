@@ -2,4 +2,4 @@
 @plugin "daisyui" {
     themes: all;
 }
-/* @plugin "@catppuccin/daisyui"; */
+@plugin "./catppuccinTheme.ts";

@@ -1,5 +1,6 @@
 import type { AccentName, ColorName, FlavorName, MonochromaticName } from '@catppuccin/palette'
 import type themes from 'daisyui/theme/object'
+import type { PluginCreator } from 'tailwindcss/plugin'
 import { flavors } from '@catppuccin/palette'
 import daisyuiThemePlugin from 'daisyui/theme'
 import plugin from 'tailwindcss/plugin'
@@ -74,9 +75,9 @@ function mergeTheme(themeName: FlavorName, options: CustomThemeOptions = {}) {
   return theme
 }
 
-function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyuiOptions?: DaisyuiOptions): any
-function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyuiOptions?: DaisyuiOptions): any
-function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyuiOptions = {}): any {
+function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyuiOptions?: DaisyuiOptions): PluginCreator
+function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyuiOptions?: DaisyuiOptions): PluginCreator
+function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyuiOptions = {}): PluginCreator {
   let theme: Theme
 
   if (typeof options === 'string') {
@@ -100,4 +101,4 @@ function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOpti
 }
 
 export type { AccentName, FlavorName, MonochromaticName }
-export { createCatppuccinPlugin, createCatppuccinPlugin as default }
+export { createCatppuccinPlugin }
