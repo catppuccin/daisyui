@@ -2,98 +2,133 @@ import type { AccentName, ColorName, FlavorName, MonochromaticName } from '@catp
 import type themes from 'daisyui/theme/object'
 import type { PluginCreator } from 'tailwindcss/plugin'
 import { flavors } from '@catppuccin/palette'
-import daisyuiThemePlugin from 'daisyui/theme'
+import daisyThemePlugin from 'daisyui/theme'
 import plugin from 'tailwindcss/plugin'
 
-interface DaisyuiOptions {
-  'isDefault'?: boolean
+interface ColorOptions {
+  'primary': AccentName
+  'primary-content': MonochromaticName
+  'secondary': AccentName | MonochromaticName
+  'secondary-content': MonochromaticName
+  'accent': AccentName
+  'accent-content': MonochromaticName
+  'neutral': MonochromaticName
+  'neutral-content': MonochromaticName
+  'success': 'green'
+  'success-content': MonochromaticName
+  'warning': 'yellow'
+  'warning-content': MonochromaticName
+  'error': 'red'
+  'error-content': MonochromaticName
+  'info': AccentName
+  'info-content': MonochromaticName
+  'base-100': MonochromaticName
+  'base-200': MonochromaticName
+  'base-300': MonochromaticName
+  'base-content': MonochromaticName
+}
+
+type Radius = '0rem' | '0.25rem' | '0.5rem' | '1rem' | '2rem'
+type Sizes = '0.1875rem' | '0.21875rem' | '0.25rem' | '0.28125rem' | '0.3125rem'
+type Border = '0.5px' | '1px' | '1.5px' | '2px'
+
+interface OtherOptions {
+  '--radius-selector': Radius
+  '--radius-field': Radius
+  '--radius-box': Radius
+  '--size-field': Sizes
+  '--size-selector': Sizes
+  '--border': Border
+  '--depth': boolean
+  '--noise': boolean
+}
+
+interface DaisyOptions {
+  'default'?: boolean
   'prefersdark'?: boolean
   'color-scheme'?: string
   'root'?: string
 }
 
-type Theme = typeof themes[keyof typeof themes]
+type Theme = Omit<typeof themes[keyof typeof themes], 'color-scheme'>
+type ThemeOptions = ColorOptions & OtherOptions
 
-const defaultTheme: Theme = {
-  // Colors
-  'color-scheme': 'normal',
-  '--color-primary': 'lavender',
-  '--color-primary-content': 'text',
-  '--color-secondary': 'subtext1',
-  '--color-secondary-content': 'text',
-  '--color-accent': 'rosewater',
-  '--color-accent-content': 'text',
-  '--color-neutral': 'overlay1',
-  '--color-neutral-content': 'text',
-  '--color-success': 'green',
-  '--color-success-content': 'text',
-  '--color-warning': 'yellow',
-  '--color-warning-content': 'text',
-  '--color-error': 'red',
-  '--color-error-content': 'text',
-  '--color-info': 'blue',
-  '--color-info-content': 'text',
-  '--color-base-100': 'base',
-  '--color-base-200': 'mantle',
-  '--color-base-300': 'crust',
-  '--color-base-content': 'subtext1',
-  // Radius
-  '--radius-selector': '0.75rem',
+const defaultThemeOption: ThemeOptions = {
+  'primary': 'lavender',
+  'primary-content': 'mantle',
+  'secondary': 'surface0',
+  'secondary-content': 'text',
+  'accent': 'rosewater',
+  'accent-content': 'mantle',
+  'neutral': 'overlay1',
+  'neutral-content': 'mantle',
+  'success': 'green',
+  'success-content': 'base',
+  'warning': 'yellow',
+  'warning-content': 'base',
+  'error': 'red',
+  'error-content': 'base',
+  'info': 'sky',
+  'info-content': 'mantle',
+  'base-100': 'base',
+  'base-200': 'mantle',
+  'base-300': 'crust',
+  'base-content': 'text',
+  '--radius-selector': '0.25rem',
   '--radius-field': '0.5rem',
-  '--radius-box': '1rem',
-  // Sizes
+  '--radius-box': '0.5rem',
   '--size-field': '0.25rem',
-  '--size-selector': '0.5rem',
+  '--size-selector': '0.25rem',
   '--border': '1px',
-  // Effects
-  '--depth': '1',
-  '--noise': '0',
+  '--depth': true,
+  '--noise': false,
 }
 
-interface ThemeOptions {
-  [key: string]: ColorName
-  primary: AccentName
-  secondary: AccentName | MonochromaticName
-  accent: AccentName
-  neutral: MonochromaticName
-  success: 'green'
-  warning: 'yellow'
-  error: 'red'
-  info: AccentName
-}
+type CustomThemeOptions = Partial<Omit<ThemeOptions, 'success' | 'warning' | 'error'>>
 
-type CustomThemeOptions = Partial<Omit<ThemeOptions, 'success' | 'warning' | 'error'>> & Record<string, string>
-
-function mergeTheme(themeName: FlavorName, options: CustomThemeOptions = {}) {
-  const theme: Theme = {
-    ...defaultTheme,
-    ...Object.keys(options).reduce<Record<string, string>>((acc, key) => {
-      acc[`--color-${key}`] = flavors[themeName].colors[options[key]].hex
-      return acc
-    }, {}),
+function generateTheme(themeName: FlavorName, themeOptions: CustomThemeOptions = {}) {
+  const options = {
+    ...defaultThemeOption,
+    ...themeOptions,
   }
+
+  const theme = Object.assign(
+    Object.fromEntries(Object.entries(options).filter(([k]) => k.startsWith('--'))),
+    Object.entries(options)
+      .filter(([_, v]) => typeof v === 'boolean')
+      .reduce<Partial<Theme>>((acc, [key, value]) => {
+        acc[key as keyof Theme] = value ? '1' : '0'
+        return acc
+      }, {}),
+    Object.entries(options)
+      .filter(([k]) => !k.startsWith('--'))
+      .reduce<Partial<Theme>>((acc, [key, value]) => {
+        acc[`--color-${key}` as keyof Theme] = flavors[themeName].colors[value as ColorName].hex
+        return acc
+      }, {}),
+  ) as Theme
   return theme
 }
 
-function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyuiOptions?: DaisyuiOptions): PluginCreator
-function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyuiOptions?: DaisyuiOptions): PluginCreator
-function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyuiOptions = {}): PluginCreator {
+function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyOptions?: DaisyOptions): PluginCreator
+function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyOptions?: DaisyOptions): PluginCreator
+function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyOptions = {}): PluginCreator {
   let theme: Theme
 
   if (typeof options === 'string') {
-    theme = mergeTheme(themeName, {
+    theme = generateTheme(themeName, {
       accent: options,
     })
   }
   else {
-    theme = mergeTheme(themeName, options)
+    theme = generateTheme(themeName, options)
   }
 
   return plugin.withOptions(() => {
     return (PluginAPI) => {
-      daisyuiThemePlugin({
+      daisyThemePlugin({
         name: themeName,
-        ...daisyuiOptions,
+        ...daisyOptions,
         ...theme,
       }).handler(PluginAPI)
     }
