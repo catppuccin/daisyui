@@ -90,12 +90,12 @@ function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOpti
   }
 
   return plugin.withOptions(() => {
-    return ({ addBase }) => {
+    return (PluginAPI) => {
       daisyuiThemePlugin({
         name: themeName,
         ...daisyuiOptions,
         ...theme,
-      })({ addBase })
+      }).handler(PluginAPI)
     }
   })
 }

@@ -1,6 +1,7 @@
 declare module 'daisyui/theme' {
-  import type PluginCreator from 'tailwindcss/plugin'
+  import type Plugin from 'tailwindcss/plugin'
 
-  const themePlugin: PluginCreator
+  type WithOptionsType = ReturnType<typeof Plugin.withOptions>
+  declare const themePlugin: WithOptionsType
   export default themePlugin
 }
