@@ -1,10 +1,11 @@
 import type { AccentName, ColorName, FlavorName, MonochromaticName } from '@catppuccin/palette'
 import type themes from 'daisyui/theme/object'
-import type { PluginCreator } from 'tailwindcss/plugin'
+import type Plugin from 'tailwindcss/plugin'
 import { flavors } from '@catppuccin/palette'
 import daisyThemePlugin from 'daisyui/theme'
 import plugin from 'tailwindcss/plugin'
 
+type WithOptionsType = ReturnType<typeof Plugin.withOptions>
 interface ColorOptions {
   'primary': AccentName
   'primary-content': MonochromaticName
@@ -44,13 +45,12 @@ interface OtherOptions {
 }
 
 interface DaisyOptions {
-  'default'?: boolean
-  'prefersdark'?: boolean
-  'color-scheme'?: string
-  'root'?: string
+  default?: boolean
+  prefersdark?: boolean
+  root?: string
 }
 
-type Theme = Omit<typeof themes[keyof typeof themes], 'color-scheme'>
+type Theme = typeof themes[keyof typeof themes]
 type ThemeOptions = ColorOptions & OtherOptions
 
 const defaultThemeOption: ThemeOptions = {
@@ -90,29 +90,31 @@ function generateTheme(themeName: FlavorName, themeOptions: CustomThemeOptions =
   const options = {
     ...defaultThemeOption,
     ...themeOptions,
-  }
+  } as ThemeOptions
 
-  const theme = Object.assign(
-    Object.fromEntries(Object.entries(options).filter(([k]) => k.startsWith('--'))),
-    Object.entries(options)
-      .filter(([_, v]) => typeof v === 'boolean')
-      .reduce<Partial<Theme>>((acc, [key, value]) => {
-        acc[key as keyof Theme] = value ? '1' : '0'
+  const entries = Object.entries(options)
+  const theme = {
+    'color-scheme': flavors[themeName].dark ? 'dark' : 'light',
+    ...Object.fromEntries(entries.filter(([k]) => k.startsWith('--'))) as Record<`${keyof OtherOptions}`, string>,
+    ...(entries
+      .filter(([_, v]) => typeof v === 'boolean') as ['--noise' | '--depth', boolean][])
+      .reduce((acc, [key, value]) => {
+        acc[key] = value ? '1' : '0'
         return acc
-      }, {}),
-    Object.entries(options)
-      .filter(([k]) => !k.startsWith('--'))
-      .reduce<Partial<Theme>>((acc, [key, value]) => {
-        acc[`--color-${key}` as keyof Theme] = flavors[themeName].colors[value as ColorName].hex
+      }, {} as Pick<Theme, '--noise' | '--depth'>),
+    ...(entries
+      .filter(([k]) => !k.startsWith('--')) as [keyof ColorOptions, ColorName][])
+      .reduce((acc, [key, value]) => {
+        acc[`--color-${key}`] = flavors[themeName].colors[value].hex
         return acc
-      }, {}),
-  ) as Theme
+      }, {} as Pick<Theme, `--color-${keyof ColorOptions}`>),
+  } as Theme
   return theme
 }
 
-function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyOptions?: DaisyOptions): PluginCreator
-function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyOptions?: DaisyOptions): PluginCreator
-function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyOptions = {}): PluginCreator {
+function createCatppuccinPlugin(theme: FlavorName, accent?: AccentName, daisyOptions?: DaisyOptions): WithOptionsType
+function createCatppuccinPlugin(theme: FlavorName, customColors?: CustomThemeOptions, daisyOptions?: DaisyOptions): WithOptionsType
+function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOptions | AccentName, daisyOptions = {}): WithOptionsType {
   let theme: Theme
 
   if (typeof options === 'string') {

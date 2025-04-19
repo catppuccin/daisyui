@@ -10,5 +10,5 @@ export default createCatppuccinPlugin('mocha', {
   '--depth': true,
   '--noise': false,
 }, {
-  'color-scheme': 'dark',
+  prefersdark: true,
 })
