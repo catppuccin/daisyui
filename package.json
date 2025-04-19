@@ -13,17 +13,22 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./legacy": {
+      "types": "./dist/legacy/index.d.ts",
+      "import": "./dist/legacy/index.mjs",
+      "require": "./dist/legacy/index.cjs"
     }
   },
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
     "build": "unbuild",
-    "dev:root": "unbuild --stub",
+    "dev": "unbuild --stub",
     "dev:example": "pnpm -F example dev",
-    "dev": "pnpm run /^dev:.*/",
     "lint:fix": "eslint . --fix",
     "test": "vitest --typecheck",
     "prepublishOnly": "pnpm run build",
