@@ -24,7 +24,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
@@ -47,7 +49,6 @@
     "eslint": "^9.23.0",
     "eslint-plugin-format": "^1.0.1",
     "typescript": "^5.8.2",
-    "unbuild": "^3.5.0",
-    "vitest": "^1.5.2"
+    "unbuild": "^3.5.0"
   }
 }

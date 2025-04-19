@@ -38,9 +38,9 @@
 
 ### Installation
 
-| **npm**                         | **pnpm**                     | **yarn**                     |
-| ------------------------------- | ---------------------------- | ---------------------------- |
-| npm install @catppuccin/daisyui | pnpm add @catppuccin/daisyui | yarn add @catppuccin/daisyui |
+| **npm**                            | **pnpm**                        | **yarn**                        |
+| ---------------------------------- | ------------------------------- | ------------------------------- |
+| npm install -D @catppuccin/daisyui | pnpm add -D @catppuccin/daisyui | yarn add -D @catppuccin/daisyui |
 
 ### Configuration
 
