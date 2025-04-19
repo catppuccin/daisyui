@@ -1,9 +1,6 @@
-// eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default antfu(
-  {
-    markdown: false,
-    ignores: ['**/node_modules/**', '**/dist/**'],
-  },
-)
+export default antfu({
+  formatters: true,
+  markdown: true,
+})

@@ -2,7 +2,7 @@
   "name": "@catppuccin/daisyui",
   "type": "module",
   "version": "1.2.1",
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.7.1",
   "description": "🌼 Soothing pastel theme for daisyui",
   "author": "lime <liumingxun@yeah.net>",
   "license": "MIT",
@@ -11,35 +11,44 @@
     "theme",
     "daisyui"
   ],
-  "browser": "dist/catppuccin.css",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./legacy": {
+      "types": "./dist/legacy/index.d.ts",
+      "import": "./dist/legacy/index.mjs",
+      "require": "./dist/legacy/index.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
   "files": [
-    "./dist/"
+    "dist"
   ],
   "scripts": {
-    "build": "tsup && node ./src/generate.cjs",
-    "dev:root": "tsup --watch",
+    "build": "unbuild",
+    "dev": "unbuild --stub",
     "dev:example": "pnpm -F example dev",
-    "dev": "pnpm run /^dev:.*/",
     "lint:fix": "eslint . --fix",
     "test": "vitest --typecheck",
     "prepublishOnly": "pnpm run build",
     "publish": "npm publish"
   },
   "peerDependencies": {
-    "daisyui": "^4.10.2"
+    "tailwindcss": "^4.0.17"
   },
   "dependencies": {
     "@catppuccin/palette": "^1.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.0.0",
+    "@antfu/eslint-config": "^4.11.0",
     "@types/node": "^20",
-    "eslint": "^9.0.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5",
-    "vitest": "^1.5.2"
+    "daisyui": "^5.0.9",
+    "eslint": "^9.23.0",
+    "eslint-plugin-format": "^1.0.1",
+    "typescript": "^5.8.2",
+    "unbuild": "^3.5.0"
   }
 }

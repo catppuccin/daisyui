@@ -1,18 +1,18 @@
 <h3 align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin for <a href="https://github.com/saadeghi/daisyui">daisyUI</a>
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+  Catppuccin for <a href="https://github.com/saadeghi/daisyui">daisyUI</a>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/daisyui/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/daisyui?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/daisyui/issues"><img src="https://img.shields.io/github/issues/catppuccin/daisyui?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/daisyui/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/daisyui?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+  <a href="https://github.com/catppuccin/daisyui/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/daisyui?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+  <a href="https://github.com/catppuccin/daisyui/issues"><img src="https://img.shields.io/github/issues/catppuccin/daisyui?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+  <a href="https://github.com/catppuccin/daisyui/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/daisyui?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/preview.webp"/>
+  <img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/preview.webp"/>
 </p>
 
 ## Previews
@@ -38,64 +38,49 @@
 
 ### Installation
 
-| **npm**                            | **pnpm**                            | **yarn**                            |
-| ---------------------------------- | ----------------------------------- | ----------------------------------- |
-| npm install -D @catppuccin/daisyui | pnpm install -D @catppuccin/daisyui | yarn install -D @catppuccin/daisyui |
-
-Or try it with [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@catppuccin/daisyui/dist/catppuccin.min.css)! See [this example](https://codesandbox.io/p/sandbox/rqclg3) for more details.
+| **npm**                            | **pnpm**                        | **yarn**                        |
+| ---------------------------------- | ------------------------------- | ------------------------------- |
+| npm install -D @catppuccin/daisyui | pnpm add -D @catppuccin/daisyui | yarn add -D @catppuccin/daisyui |
 
 ### Configuration
 
-```javascript
-// tailwind.config.js
-import catppuccin from '@catppuccin/daisyui'
+0. Follow the installation instructions for [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) and [Daisy UI](https://daisyui.com/docs/install/)
 
-module.exports = {
-  content: ['./src/**/*.{js,ts}', 'index.html'],
-  plugins: [require('daisyui')],
-  daisyui: {
-    // The top value of this array will be used as the default theme
-    // You can use https://github.com/saadeghi/theme-change to switch between themes
-    themes: [
-      // You can simply select a catppuccin flavor with sane default colors
-      catppuccin('latte'),
-      // Or you can optionally specify accent colors
-      catppuccin('frappe', 'pink'),
-      // Or you can optionally customize more semantic colors
-      catppuccin('macchiato', { primary: 'maroon' }),
-      // Values not explicitly defined will use default values
-      catppuccin('mocha', { primary: 'sky', secondary: 'rosewater' }),
-      // Fallback to default theme
-      'light',
-    ],
-  },
-};
-```
+1. Create a separate file like `catppuccinTheme.latte.ts` and import `@catppuccin/daisyui`
 
-#### Available Catppuccin Flavors
+   ```javascript
+   import { createCatppuccinPlugin } from '@catppuccin/daisyui'
 
-- Latte, Frappe, Macchiato, Mocha
+   export default createCatppuccinPlugin('latte')
+   ```
 
-#### Customizable Semantic Colors
+   You can view available values through your editor's type hints. Check [example](https://github.com/catppuccin/daisyui/tree/main/example/src) for additional details.
 
-- **Optional fields:** primary, secondary, accent, neutral, info
+2. Import the created file in your CSS configuration file
 
-Note: We do not recommend changing any colors other than the `primary` and `accent`, although we provide a way to do so
+   ```css
+   @import 'tailwindcss';
+   @plugin "daisyui" {
+     themes: false;
+   }
 
-#### Available Catppuccin Color Values
+   @plugin "./catppuccinTheme.latte.ts";
+   @plugin "./catppuccinTheme.frappe.ts";
+   @plugin "./catppuccinTheme.macchiato.ts";
+   @plugin "./catppuccinTheme.mocha.ts";
+   ```
 
-- **Accent Colors:** rosewater, flamingo, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, blue, lavender
-  - Can be assigned to `primary`, `secondary`, `accent` and `info` semantic color values
-- **Monochromatic Colors:** text, subtext1, subtext0, overlay2, overlay1, overlay0, surface2, surface1, surface0, base, mantle, crust
-  - Can be assigned to `secondary` and `neutral` semantic colors values
+> [!TIP]
+> For Daisy UI v4, you can import required functions from `@catppuccin/daisyui/legacy`. For specific usage, refer to the [previous guide](https://github.com/catppuccin/daisyui/blob/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8/README.md).
 
 ### Example
 
 You can use the following HTML to test the theme:
 
 ```html
-<div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-8">
+<div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-9">
   <button class="btn">Default</button>
+  <button class="btn btn-neutral">Neutral</button>
   <button class="btn btn-primary">Primary</button>
   <button class="btn btn-secondary">Secondary</button>
   <button class="btn btn-accent">Accent</button>
@@ -113,13 +98,13 @@ You can find the example in the `example` folder.
 - [Liumingxun](https://github.com/Liumingxun)
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
 </p>
 
 <p align="center">
-	Copyright &copy; 2021-present <a href="https://github.com/catppuccin" target="_blank">Catppuccin Org</a>
+  Copyright &copy; 2021-present <a href="https://github.com/catppuccin" target="_blank">Catppuccin Org</a>
 </p>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/catppuccin/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
+  <a href="https://github.com/catppuccin/catppuccin/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
 </p>
