@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/catppuccin/daisyui/compare/v1.2.1...v2.0.0) (2025-04-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to v5 ([#60](https://github.com/catppuccin/daisyui/issues/60))
+
+### Features
+
+* upgrade to v5 ([#60](https://github.com/catppuccin/daisyui/issues/60)) ([76ba362](https://github.com/catppuccin/daisyui/commit/76ba3624a453f74edca6dde16709d884a02e49a2))
+
 ## [1.2.1](https://github.com/catppuccin/daisyui/compare/v1.2.0...v1.2.1) (2024-11-15)
 
 
