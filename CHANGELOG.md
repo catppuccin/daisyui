@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/catppuccin/daisyui/compare/v2.0.0...v2.1.0) (2025-04-21)
+
+
+### Features
+
+* support CDN usage ([#71](https://github.com/catppuccin/daisyui/issues/71)) ([927b795](https://github.com/catppuccin/daisyui/commit/927b795c9656928fe34d9b0d0ce4d55fa06d791f))
+
 ## [2.0.0](https://github.com/catppuccin/daisyui/compare/v1.2.1...v2.0.0) (2025-04-19)
 
 
