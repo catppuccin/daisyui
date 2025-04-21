@@ -80,27 +80,27 @@ Inspired by the CDN usage of Daisy UI, I have separated each theme, allowing you
 ```html
 <!-- some? -->
 <link
-  href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/latte.min.css"
+  href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/latte.css"
   rel="stylesheet"
   type="text/css"
 />
 <link
-  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.min.css,/npm/@catppuccin/daisyui@2/frappe.min.css"
+  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.css,npm/@catppuccin/daisyui@2/frappe.css"
   rel="stylesheet"
   type="text/css"
 />
 <link
-  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.min.css,/npm/@catppuccin/daisyui@2/macchiato.min.css"
+  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.css,npm/@catppuccin/daisyui@2/macchiato.css"
   rel="stylesheet"
   type="text/css"
 />
 <link
-  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.min.css,/npm/@catppuccin/daisyui@2/mocha.min.css"
+  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.css,npm/@catppuccin/daisyui@2/mocha.css"
   rel="stylesheet"
   type="text/css"
 />
 <!-- every! -->
-<link href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/themes.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/themes.css" rel="stylesheet" type="text/css" />
 ```
 
 ### Example

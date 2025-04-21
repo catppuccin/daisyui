@@ -30,6 +30,7 @@
     "./latte.css",
     "./macchiato.css",
     "./mocha.css",
+    "./themes.css",
     "dist"
   ],
   "scripts": {
