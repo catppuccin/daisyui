@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/catppuccin/daisyui/compare/v2.1.0...v2.1.1) (2025-04-21)
+
+
+### Bug Fixes
+
+* add `themes.css` to files ([#73](https://github.com/catppuccin/daisyui/issues/73)) ([10d3cc0](https://github.com/catppuccin/daisyui/commit/10d3cc0a012806c0656759b6422d8b0bab4ed2a7))
+
 ## [2.1.0](https://github.com/catppuccin/daisyui/compare/v2.0.0...v2.1.0) (2025-04-21)
 
 
