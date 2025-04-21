@@ -1,5 +1,4 @@
 import type { AccentName, ColorName, FlavorName, MonochromaticName } from '@catppuccin/palette'
-import type themes from 'daisyui/theme/object'
 import { flavors } from '@catppuccin/palette'
 
 interface ColorOptions {
@@ -40,7 +39,15 @@ interface OtherOptions {
   '--noise': boolean
 }
 
-type Theme = typeof themes[keyof typeof themes]
+type Theme = {
+  [key in `--color-${keyof ColorOptions}`]: string
+} & {
+  [key in keyof OtherOptions]: string
+} & {
+  'color-scheme': 'dark' | 'light'
+  '--noise': string
+  '--depth': string
+}
 type ThemeOptions = ColorOptions & OtherOptions
 
 const defaultThemeOption: ThemeOptions = {
