@@ -24,11 +24,16 @@
     }
   },
   "types": "./dist/index.d.ts",
+  "browser": "./themes.css",
   "files": [
+    "./frappe.css",
+    "./latte.css",
+    "./macchiato.css",
+    "./mocha.css",
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
+    "build": "unbuild && pnpx jiti ./src/generate.ts",
     "dev": "unbuild --stub",
     "dev:example": "pnpm -F example dev",
     "lint:fix": "eslint . --fix",

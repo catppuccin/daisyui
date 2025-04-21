@@ -73,6 +73,36 @@
 > [!TIP]
 > For Daisy UI v4, you can import required functions from `@catppuccin/daisyui/legacy`. For specific usage, refer to the [previous guide](https://github.com/catppuccin/daisyui/blob/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8/README.md).
 
+#### For CDN
+
+Inspired by the CDN usage of Daisy UI, I have separated each theme, allowing you to independently import a single theme or combine the themes you need. See:
+
+```html
+<!-- some? -->
+<link
+  href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/latte.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.min.css,/npm/@catppuccin/daisyui@2/frappe.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.min.css,/npm/@catppuccin/daisyui@2/macchiato.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.min.css,/npm/@catppuccin/daisyui@2/mocha.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<!-- every! -->
+<link href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/themes.min.css" rel="stylesheet" type="text/css" />
+```
+
 ### Example
 
 You can use the following HTML to test the theme:
