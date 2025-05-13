@@ -44,7 +44,7 @@
 
 ### Configuration
 
-0. Follow the installation instructions for [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) and [Daisy UI](https://daisyui.com/docs/install/)
+0. Follow the installation instructions for [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) and [daisyUI](https://daisyui.com/docs/install/)
 
 1. Create a separate file like `catppuccinTheme.latte.ts` and import `@catppuccin/daisyui`
 
@@ -71,11 +71,11 @@
    ```
 
 > [!TIP]
-> For Daisy UI v4, you can import required functions from `@catppuccin/daisyui/legacy`. For specific usage, refer to the [previous guide](https://github.com/catppuccin/daisyui/blob/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8/README.md).
+> For daisyUI v4, you can import required functions from `@catppuccin/daisyui/legacy`. For specific usage, refer to the [previous guide](https://github.com/catppuccin/daisyui/blob/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8/README.md).
 
 #### For CDN
 
-Inspired by the CDN usage of Daisy UI, I have separated each theme, allowing you to independently import a single theme or combine the themes you need. See:
+Inspired by the CDN usage of daisyUI, I have separated each theme, allowing you to independently import a single theme or combine the themes you need. See:
 
 ```html
 <!-- some? -->
