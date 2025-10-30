@@ -54,7 +54,7 @@
    export default createCatppuccinPlugin('latte')
    ```
 
-   You can view available values through your editor's type hints. Check [example](https://github.com/catppuccin/daisyui/tree/main/example/src) for additional details.
+   You can view available values through your editor's type hints. Check [example](https://github.com/catppuccin/daisyui/tree/main/example/src) and [source code](https://github.com/catppuccin/daisyui/blob/249cc7fde53ebc53ad26e932619b1567513faaea/src/index.ts#L10-L18) for additional details.
 
 2. Import the created file in your CSS configuration file
 
@@ -79,11 +79,7 @@ Inspired by the CDN usage of daisyUI, I have separated each theme, allowing you 
 
 ```html
 <!-- some? -->
-<link
-  href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/latte.css"
-  rel="stylesheet"
-  type="text/css"
-/>
+<link href="https://cdn.jsdelivr.net/npm/@catppuccin/daisyui@2/latte.css" rel="stylesheet" type="text/css" />
 <link
   href="https://cdn.jsdelivr.net/combine/npm/@catppuccin/daisyui@2/latte.css,npm/@catppuccin/daisyui@2/frappe.css"
   rel="stylesheet"
@@ -122,6 +118,25 @@ You can use the following HTML to test the theme:
 ```
 
 You can find the example in the `example` folder.
+
+### FAQ
+
+#### Themes are not working, I get the wireframe
+
+- Try to add a `default: true` declaration in the final options parameter when using `createCatppuccinPlugin`, like this:
+
+```ts
+export default createCatppuccinPlugin('latte', {}, {
+  default: true
+})
+```
+
+- Or you can add an **active** theme controller, such as one matched by the selector `input.toggle.theme-controller[type="checkbox"]:checked`.
+- Or you can either add `data-theme="latte"` to the root HTML element for global configuration, or use another client-side framework to control this attribute.
+
+#### Do I have to disable all themes from daisyUI?
+
+No, but you should still use the `createCatppuccinPlugin` option to control the default theme.
 
 ## 💝 Thanks to
 
