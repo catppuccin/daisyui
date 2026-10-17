@@ -46,7 +46,7 @@
     "tailwindcss": "^4.0.17"
   },
   "dependencies": {
-    "@catppuccin/palette": "^1.7.1"
+    "@catppuccin/palette": "^1.8.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
