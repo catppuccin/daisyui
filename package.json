@@ -49,11 +49,11 @@
     "@catppuccin/palette": "^1.8.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.11.0",
+    "@antfu/eslint-config": "^9.5.1",
     "@types/node": "^20",
     "daisyui": "^5.0.9",
-    "eslint": "^9.23.0",
-    "eslint-plugin-format": "^1.0.1",
+    "eslint": "^10.4.0",
+    "eslint-plugin-format": "^2.0.1",
     "typescript": "^5.8.2",
     "unbuild": "^3.5.0"
   }
