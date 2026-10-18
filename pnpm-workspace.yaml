@@ -5,5 +5,5 @@ shellEmulator: true
 packages:
   - example
 
-onlyBuiltDependencies:
-  - esbuild
+allowBuilds:
+  esbuild: true

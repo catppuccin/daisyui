@@ -2,7 +2,7 @@
   "name": "@catppuccin/daisyui",
   "type": "module",
   "version": "2.1.1",
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@12.14.0",
   "description": "🌼 Soothing pastel theme for daisyui",
   "author": "lime <liumingxun@yeah.net>",
   "license": "MIT",
@@ -55,11 +55,11 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",
-    "@types/node": "^20",
+    "@types/node": "^26",
     "daisyui": "^5.7.50",
     "eslint": "^10.4.0",
     "eslint-plugin-format": "^2.0.1",
-    "typescript": "^5.8.2",
+    "typescript": "^6",
     "unbuild": "^3.5.0"
   }
 }
