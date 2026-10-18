@@ -11,7 +11,7 @@
   "devDependencies": {
     "@catppuccin/daisyui": "workspace:../",
     "@tailwindcss/vite": "^4.0.17",
-    "daisyui": "^5.0.9",
+    "daisyui": "^5.7.50",
     "tailwindcss": "^4.0.17",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"

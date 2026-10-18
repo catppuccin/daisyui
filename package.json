@@ -51,7 +51,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",
     "@types/node": "^20",
-    "daisyui": "^5.0.9",
+    "daisyui": "^5.7.50",
     "eslint": "^10.4.0",
     "eslint-plugin-format": "^2.0.1",
     "typescript": "^5.8.2",
