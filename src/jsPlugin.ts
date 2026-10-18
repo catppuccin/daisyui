@@ -1,4 +1,5 @@
-import type { AccentName, CustomThemeOptions, FlavorName, MonochromaticName, Theme } from './generateTheme'
+import type { AccentName, FlavorName } from '@catppuccin/palette'
+import type { CustomThemeOptions, Theme } from './generateTheme'
 
 import daisyThemePlugin from 'daisyui/theme'
 import plugin from 'tailwindcss/plugin'
@@ -37,5 +38,4 @@ function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOpti
   })
 }
 
-export type { AccentName, FlavorName, MonochromaticName }
 export { createCatppuccinPlugin }

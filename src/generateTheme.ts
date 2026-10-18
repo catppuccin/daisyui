@@ -105,4 +105,3 @@ export function generateTheme(themeName: FlavorName, themeOptions: CustomThemeOp
 }
 
 export type { CustomThemeOptions, Theme }
-export type { AccentName, FlavorName, MonochromaticName }
