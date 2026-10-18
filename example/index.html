@@ -3,115 +3,329 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Vite App</title>
   </head>
 
   <body>
-    <div class="rounded-box px-6 py-2 w-full max-h-screen overflow-hidden">
-      <div id="app" class="pb-3"></div>
-      <div class="flex flex-col gap-3">
-        <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-9">
-          <button class="btn">Default</button>
-          <button class="btn btn-neutral">Neutral</button>
-          <button class="btn btn-primary">Primary</button>
-          <button class="btn btn-secondary">Secondary</button>
-          <button class="btn btn-accent">Accent</button>
-          <button class="btn btn-info">Info</button>
-          <button class="btn btn-success">Success</button>
-          <button class="btn btn-warning">Warning</button>
-          <button class="btn btn-error">Error</button>
+    <div class="rounded-box px-4 py-2 w-full">
+      <div class="mockup-browser bg-base-100 w-full border border-base-300">
+        <div class="mockup-browser-toolbar">
+          <div class="input">https://github.com/catppuccin/daisyui</div>
         </div>
-        <div class="grid grid-cols-2 place-items-center gap-2 md:grid-cols-4 lg:grid-cols-9">
-          <input type="text" placeholder="Default" class="input input-bordered w-full" />
-          <input type="text" placeholder="Neutral" class="input input-neutral input-bordered w-full" />
-          <input type="text" placeholder="Primary" class="input input-primary input-bordered w-full" />
-          <input type="text" placeholder="Secondary" class="input input-secondary input-bordered w-full" />
-          <input type="text" placeholder="Accent" class="input input-accent input-bordered w-full" />
-          <input type="text" placeholder="Info" class="input input-info input-bordered w-full" />
-          <input type="text" placeholder="Success" class="input input-success input-bordered w-full" />
-          <input type="text" placeholder="Warning" class="input input-warning input-bordered w-full" />
-          <input type="text" placeholder="Error" class="input input-error input-bordered w-full" />
-        </div>
-        <div
-          class="grid grid-cols-2 place-items-center gap-2 md:grid-cols-4 lg:grid-cols-9 *:flex-col *:lg:flex *:lg:gap-2 *:lg:items-center"
-        >
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle" />
-              <input type="checkbox" checked="checked" class="checkbox" />
-              <input type="radio" name="radio" class="radio" checked="" />
-            </div>
-            <span class="badge badge-soft">Default</span>
+        <div class="p-2 grid place-content-center grid-cols-4 gap-4 grid-flow">
+          <div class="fab fab-flower md:hidden">
+            <div tabindex="0" role="button" class="btn btn-lg btn-circle btn-success text-xs">Theme</div>
+            <div class="fab-close"><span class="btn btn-circle btn-lg btn-error">✕</span></div>
+            <input
+              type="radio"
+              checked
+              name="theme-buttons"
+              class="btn btn-lg btn-circle theme-controller"
+              aria-label="🌻"
+              value="latte"
+            />
+            <input
+              type="radio"
+              checked
+              name="theme-buttons"
+              class="btn btn-lg btn-circle theme-controller"
+              aria-label="🪴"
+              value="frappe"
+            />
+            <input
+              type="radio"
+              checked
+              name="theme-buttons"
+              class="btn btn-lg btn-circle theme-controller"
+              aria-label="🌺"
+              value="macchiato"
+            />
+            <input
+              type="radio"
+              checked
+              name="theme-buttons"
+              class="btn btn-lg btn-circle theme-controller"
+              aria-label="🌿"
+              value="mocha"
+            />
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-neutral" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-neutral" />
-              <input type="radio" name="radio" class="radio radio-neutral" />
+          <div class="hidden md:block md:col-span-4">
+            <div class="join join-horizontal w-full *:w-1/4">
+              <input
+                type="radio"
+                checked
+                name="theme-buttons"
+                class="btn theme-controller join-item"
+                aria-label="latte"
+                value="latte"
+              />
+              <input
+                type="radio"
+                name="theme-buttons"
+                class="btn theme-controller join-item"
+                aria-label="frappe"
+                value="frappe"
+              />
+              <input
+                type="radio"
+                name="theme-buttons"
+                class="btn theme-controller join-item"
+                aria-label="macchiato"
+                value="macchiato"
+              />
+              <input
+                type="radio"
+                name="theme-buttons"
+                class="btn theme-controller join-item"
+                aria-label="mocha"
+                value="mocha"
+              />
             </div>
-            <span class="badge badge-soft badge-neutral">Neutral</span>
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-primary" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
-              <input type="radio" name="radio" class="radio radio-primary" />
+          <div class="col-span-4">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-9">
+              <button class="btn">Default</button>
+              <button class="btn btn-neutral">Neutral</button>
+              <button class="btn btn-primary">Primary</button>
+              <button class="btn btn-secondary">Secondary</button>
+              <button class="btn btn-accent">Accent</button>
+              <button class="btn btn-info">Info</button>
+              <button class="btn btn-success">Success</button>
+              <button class="btn btn-warning">Warning</button>
+              <button class="btn btn-error">Error</button>
             </div>
-            <span class="badge badge-soft badge-primary">Primary</span>
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-secondary" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-secondary" />
-              <input type="radio" name="radio" class="radio radio-secondary" />
+          <div class="col-span-4">
+            <div class="grid grid-cols-2 place-items-center gap-2 md:grid-cols-4 lg:grid-cols-9">
+              <input type="text" placeholder="Default" class="input input-bordered w-full" />
+              <input type="text" placeholder="Neutral" class="input input-neutral input-bordered w-full" />
+              <input type="text" placeholder="Primary" class="input input-primary input-bordered w-full" />
+              <input type="text" placeholder="Secondary" class="input input-secondary input-bordered w-full" />
+              <input type="text" placeholder="Accent" class="input input-accent input-bordered w-full" />
+              <input type="text" placeholder="Info" class="input input-info input-bordered w-full" />
+              <input type="text" placeholder="Success" class="input input-success input-bordered w-full" />
+              <input type="text" placeholder="Warning" class="input input-warning input-bordered w-full" />
+              <input type="text" placeholder="Error" class="input input-error input-bordered w-full" />
             </div>
-            <span class="badge badge-soft badge-secondary">Secondary</span>
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-accent" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
-              <input type="radio" name="radio" class="radio radio-accent" />
+          <div class="col-span-4">
+            <div
+              class="grid grid-cols-2 place-items-center gap-2 md:grid-cols-4 lg:grid-cols-9 *:flex-col *:lg:flex *:lg:gap-2 *:lg:items-center"
+            >
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle" />
+                  <input type="checkbox" checked="checked" class="checkbox" />
+                  <input type="radio" name="radio" class="radio" checked="" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft">Default</span>
+                  <span class="badge badge-sm">Default</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-neutral" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-neutral" />
+                  <input type="radio" name="radio" class="radio radio-neutral" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-neutral">Neutral</span>
+                  <span class="badge badge-sm badge-neutral">Neutral</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-primary" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+                  <input type="radio" name="radio" class="radio radio-primary" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-primary">Primary</span>
+                  <span class="badge badge-sm badge-primary">Primary</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-secondary" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-secondary" />
+                  <input type="radio" name="radio" class="radio radio-secondary" />
+                </div>
+                <div>
+                  <span class="badge badge-xs badge-soft badge-secondary">Secondary</span>
+                  <span class="badge badge-xs badge-secondary">Secondary</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-accent" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
+                  <input type="radio" name="radio" class="radio radio-accent" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-accent">Accent</span>
+                  <span class="badge badge-sm badge-accent">Accent</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-info" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-info" />
+                  <input type="radio" name="radio" class="radio radio-info" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-info">Info</span>
+                  <span class="badge badge-sm badge-info">Info</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-success" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-success" />
+                  <input type="radio" name="radio" class="radio radio-success" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-success">Success</span>
+                  <span class="badge badge-sm badge-success">Success</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-warning" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-warning" />
+                  <input type="radio" name="radio" class="radio radio-warning" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-warning">Warning</span>
+                  <span class="badge badge-sm badge-warning">Warning</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <input type="checkbox" checked="checked" class="toggle toggle-error" />
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-error" />
+                  <input type="radio" name="radio" class="radio radio-error" />
+                </div>
+                <div>
+                  <span class="badge badge-sm badge-soft badge-error">Error</span>
+                  <span class="badge badge-sm badge-error">Error</span>
+                </div>
+              </div>
             </div>
-            <span class="badge badge-soft badge-accent">Accent</span>
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-info" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-info" />
-              <input type="radio" name="radio" class="radio radio-info" />
+          <div class="col-span-4 md:col-span-1 row-span-6 hover-3d">
+            <div class="mockup-phone">
+              <div class="mockup-phone-camera"></div>
+              <div class="mockup-phone-display bg-base-200 py-12 px-2">
+                <div class="flex flex-col h-full justify-end-safe">
+                  <div class="chat chat-start">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-primary">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </div>
+                  </div>
+                  <div class="chat chat-start">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-secondary">Lorem ipsum dolor sit!</div>
+                  </div>
+                  <div class="chat chat-start">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-accent">Lorem ipsum dolor sit amet consectetur?</div>
+                  </div>
+                  <div class="chat chat-end">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://cdn.jsdelivr.net/gh/catppuccin/catppuccin@d09787d/assets/logos/exports/latte_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-info">Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+                  </div>
+                  <div class="chat chat-end">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://cdn.jsdelivr.net/gh/catppuccin/catppuccin@d09787d/assets/logos/exports/latte_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-success">Lorem ipsum dolor sit amet.</div>
+                  </div>
+                  <div class="chat chat-end">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://cdn.jsdelivr.net/gh/catppuccin/catppuccin@d09787d/assets/logos/exports/latte_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-warning">Lorem, ipsum dolor sit amet consectetur.</div>
+                  </div>
+                  <div class="chat chat-end">
+                    <div class="chat-image avatar">
+                      <div class="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS chat bubble component"
+                          src="https://cdn.jsdelivr.net/gh/catppuccin/catppuccin@d09787d/assets/logos/exports/latte_circle.png"
+                        />
+                      </div>
+                    </div>
+                    <div class="chat-bubble chat-bubble-error">Lorem, ipsum dolor.</div>
+                  </div>
+                  <div class="mt-2">
+                    <input type="text" placeholder="Say something!" class="input input-accent outline-0" />
+                  </div>
+                </div>
+              </div>
             </div>
-            <span class="badge badge-soft badge-info">Info</span>
+
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-success" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-success" />
-              <input type="radio" name="radio" class="radio radio-success" />
-            </div>
-            <span class="badge badge-soft badge-success">Success</span>
+          <div class="col-span-4 md:col-span-1 row-span-1 tabs tabs-box">
+            <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 1" />
+            <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 1</div>
+
+            <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 2" checked="checked" />
+            <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
+
+            <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 3" />
+            <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 3</div>
           </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-warning" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-warning" />
-              <input type="radio" name="radio" class="radio radio-warning" />
-            </div>
-            <span class="badge badge-soft badge-warning">Warning</span>
-          </div>
-          <div>
-            <div>
-              <input type="checkbox" checked="checked" class="toggle toggle-error" />
-              <input type="checkbox" checked="checked" class="checkbox checkbox-error" />
-              <input type="radio" name="radio" class="radio radio-error" />
-            </div>
-            <span class="badge badge-soft badge-error">Error</span>
-          </div>
-        </div>
-        <div class="flex flex-col gap-3">
-          <div class="flex flex-col gap-3 md:flex-row">
-            <div class="flex flex-col justify-around md:w-1/2 lg:w-1/4">
+          <div class="col-span-4 h-30 md:h-auto md:col-span-1">
+            <div class="flex flex-col justify-around h-full">
               <progress value="20" max="100" class="progress">Default</progress>
               <progress value="30" max="100" class="progress progress-neutral">Neutral</progress>
               <progress value="40" max="100" class="progress progress-primary">Primary</progress>
@@ -122,228 +336,206 @@
               <progress value="90" max="100" class="progress progress-warning">Warning</progress>
               <progress value="100" max="100" class="progress progress-error">Error</progress>
             </div>
-            <div class="flex flex-col justify-around md:w-1/2 lg:w-1/4">
-              <input type="range" min="0" max="100" value="100" class="range range-xs" />
-              <input type="range" min="0" max="100" value="90" class="range range-xs range-neutral" />
-              <input type="range" min="0" max="100" value="80" class="range range-xs range-primary" />
-              <input type="range" min="0" max="100" value="70" class="range range-xs range-secondary" />
-              <input type="range" min="0" max="100" value="60" class="range range-xs range-accent" />
-              <input type="range" min="0" max="100" value="50" class="range range-xs range-info" />
-              <input type="range" min="0" max="100" value="40" class="range range-xs range-success" />
-              <input type="range" min="0" max="100" value="30" class="range range-xs range-warning" />
-              <input type="range" min="0" max="100" value="20" class="range range-xs range-error" />
+          </div>
+          <div class="col-span-4 h-40 md:h-auto md:col-span-1">
+            <div class="flex flex-col justify-around h-full">
+              <input type="range" min="0" max="100" value="100" class="range w-full range-xs" />
+              <input type="range" min="0" max="100" value="90" class="range w-full range-xs range-neutral" />
+              <input type="range" min="0" max="100" value="80" class="range w-full range-xs range-primary" />
+              <input type="range" min="0" max="100" value="70" class="range w-full range-xs range-secondary" />
+              <input type="range" min="0" max="100" value="60" class="range w-full range-xs range-accent" />
+              <input type="range" min="0" max="100" value="50" class="range w-full range-xs range-info" />
+              <input type="range" min="0" max="100" value="40" class="range w-full range-xs range-success" />
+              <input type="range" min="0" max="100" value="30" class="range w-full range-xs range-warning" />
+              <input type="range" min="0" max="100" value="20" class="range w-full range-xs range-error" />
             </div>
-            <div class="md:w-1/2 lg:w-1/4">
-              <div role="tablist" class="tabs tabs-lift">
-                <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Tab 1" />
-                <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 1</div>
-                <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Tab 2" checked="checked" />
-                <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
-                <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Tab 3" />
-                <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 3</div>
-              </div>
-              <div class="flex flex-col">
-                <span class="link">I'm a simple link</span> <span class="link link-primary">I'm a simple link</span>
-                <span class="link link-secondary">I'm a simple link</span>
-                <span class="link link-accent">I'm a simple link</span>
-              </div>
+          </div>
+          <div class="col-span-4 md:col-span-3 flex flex-col md:flex-row justify-between gap-2">
+            <div role="alert" class="alert">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="stroke-info h-6 w-6 shrink-0"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span>12 unread messages. Tap to see.</span>
             </div>
-            <div class="stats bg-base-300 border-base-300 border md:w-1/2 lg:w-1/4">
+            <div role="alert" class="alert alert-info">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="h-6 w-6 shrink-0 stroke-current"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span>New software update available.</span>
+            </div>
+            <div role="alert" class="alert alert-success">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Your purchase has been confirmed!</span>
+            </div>
+            <div role="alert" class="alert alert-warning">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                />
+              </svg>
+              <span>Warning: Invalid email address!</span>
+            </div>
+            <div role="alert" class="alert alert-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Error! Task failed successfully.</span>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-3 flex flex-col md:flex-row justify-between gap-2">
+            <div role="alert" class="alert alert-info alert-soft">
+              <span>12 unread messages. Tap to see.</span>
+            </div>
+            <div role="alert" class="alert alert-success alert-soft">
+              <span>Your purchase has been confirmed!</span>
+            </div>
+            <div role="alert" class="alert alert-warning alert-soft">
+              <span>Warning: Invalid email address!</span>
+            </div>
+            <div role="alert" class="alert alert-error alert-soft">
+              <span>Error! Task failed successfully.</span>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-3 flex flex-col md:flex-row justify-between gap-2">
+            <div role="alert" class="alert alert-info alert-outline">
+              <span>12 unread messages. Tap to see.</span>
+            </div>
+            <div role="alert" class="alert alert-success alert-outline">
+              <span>Your purchase has been confirmed!</span>
+            </div>
+            <div role="alert" class="alert alert-warning alert-outline">
+              <span>Warning: Invalid email address!</span>
+            </div>
+            <div role="alert" class="alert alert-error alert-outline">
+              <span>Error! Task failed successfully.</span>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-2">
+            <div class="stats stats-vertical w-full md:w-auto md:stats-horizontal shadow">
               <div class="stat">
-                <div class="stat-title">Total Page Views</div>
-                <div class="stat-value">89,400</div>
+                <div class="stat-figure text-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    class="inline-block h-8 w-8 stroke-current"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="stat-title">Total Likes</div>
+                <div class="stat-value text-primary">25.6K</div>
                 <div class="stat-desc">21% more than last month</div>
               </div>
-            </div>
-            <div class="flex flex-wrap items-center justify-center gap-3 md:w-1/2 lg:w-1/4">
-              <div class="card card-border border-base-300 w-full">
-                <div class="mockup-code">
-                  <pre class="text-sm" data-prefix="$"><code>npm i daisyui</code></pre>
-                  <pre class="text-sm" data-prefix=">"><code>installing...</code></pre>
-                  <pre class="text-sm" data-prefix=">"><code>Done!</code></pre>
+
+              <div class="stat">
+                <div class="stat-figure text-secondary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    class="inline-block h-8 w-8 stroke-current"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    ></path>
+                  </svg>
                 </div>
+                <div class="stat-title">Page Views</div>
+                <div class="stat-value text-secondary">2.6M</div>
+                <div class="stat-desc">21% more than last month</div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex gap-3">
-          <div>
-            <ul class="timeline timeline-vertical timeline-compact">
-              <li>
-                <div class="timeline-middle">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    class="text-primary h-5 w-5"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Sorcerer's Stack</div>
-                <hr class="bg-primary" />
-              </li>
-              <li>
-                <hr class="bg-primary" />
-                <div class="timeline-middle">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    class="text-primary h-5 w-5"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Chamber of Servers</div>
-                <hr class="bg-primary" />
-              </li>
-              <li>
-                <hr class="bg-primary" />
-                <div class="timeline-middle">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    class="text-primary h-5 w-5"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Prisoner of Azure</div>
-                <hr class="bg-primary" />
-              </li>
-              <li>
-                <hr class="bg-primary" />
-                <div class="timeline-middle">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    class="text-primary h-5 w-5"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Goblet of Firebase</div>
-                <hr />
-              </li>
-              <li>
-                <hr />
-                <div class="timeline-middle">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Elixir of Phoenix</div>
-                <hr />
-              </li>
-              <li>
-                <hr />
-                <div class="timeline-middle">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Half-Deployed App</div>
-                <hr />
-              </li>
-              <li>
-                <hr />
-                <div class="timeline-middle">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="timeline-end timeline-box">Harry Potter and Deathly Frameworks</div>
-              </li>
-            </ul>
-          </div>
-          <div class="flex flex-col justify-between">
-            <div class="navbar bg-base-100 shadow-sm">
-              <div class="navbar-start">
-                <div class="dropdown">
-                  <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h8m-8 6h16"
+
+              <div class="stat">
+                <div class="stat-figure text-secondary">
+                  <div class="avatar avatar-online">
+                    <div class="w-16 rounded-full">
+                      <img
+                        alt="Tailwind CSS stat example component"
+                        src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png"
                       />
-                    </svg>
+                    </div>
                   </div>
-                  <ul
-                    tabindex="0"
-                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                  >
-                    <li><a>Item 1</a></li>
-                    <li>
-                      <a>Parent</a>
-                      <ul class="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                      </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
-                  </ul>
                 </div>
-                <a class="btn btn-ghost text-xl">daisyUI</a>
-              </div>
-              <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal px-1">
-                  <li><a>Item 1</a></li>
-                  <li>
-                    <details>
-                      <summary>Parent</summary>
-                      <ul class="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                      </ul>
-                    </details>
-                  </li>
-                  <li><a>Item 3</a></li>
-                </ul>
-              </div>
-              <div class="navbar-end">
-                <a class="btn">Button</a>
+                <div class="stat-value">86%</div>
+                <div class="stat-title">Tasks done</div>
+                <div class="stat-desc text-secondary">31 tasks remaining</div>
               </div>
             </div>
-            <ul class="steps">
+          </div>
+          <div class="col-span-4 md:col-span-1 md:row-span-2 h-30 md:h-auto">
+            <figure class="diff h-full" tabindex="0">
+              <div class="diff-item-1" role="img" tabindex="0">
+                <div class="bg-primary text-primary-content grid place-content-center text-6xl font-black">
+                  catppuccin
+                </div>
+              </div>
+              <div class="diff-item-2" role="img">
+                <div class="bg-base-200 grid place-content-center text-5xl font-black">CATPPUCCIN</div>
+              </div>
+              <div class="diff-resizer"></div>
+            </figure>
+          </div>
+          <div class="col-span-4 md:col-span-2 flex flex-row md:flex-col justify-around">
+            <ul class="steps steps-vertical md:steps-horizontal md:w-full">
               <li data-content="" class="step step-primary">Step 1</li>
               <li data-content="?" class="step step-primary">Step 2</li>
               <li data-content="!" class="step step-accent">Step 3</li>
@@ -354,8 +546,8 @@
               <li data-content="★" class="step step-neutral">Step 8</li>
               <li data-content="●" class="step step-neutral">Step 9</li>
             </ul>
-            <ul class="steps">
-              <li data-content="" class="step step">Step 1</li>
+            <ul class="steps steps-vertical md:steps-horizontal md:w-full">
+              <li data-content="" class="step">Step 1</li>
               <li data-content="?" class="step step-secondary">Step 2</li>
               <li data-content="!" class="step step-secondary">Step 3</li>
               <li data-content="✕" class="step step-info">Step 4</li>
@@ -365,121 +557,6 @@
               <li data-content="★" class="step step-error">Step 8</li>
               <li data-content="●" class="step step-error">Step 9</li>
             </ul>
-            <div class="join">
-              <div>
-                <div>
-                  <input class="input join-item" placeholder="Search" />
-                </div>
-              </div>
-              <select class="select join-item">
-                <option disabled selected>Filter</option>
-                <option>Sci-fi</option>
-                <option>Drama</option>
-                <option>Action</option>
-              </select>
-              <button class="btn join-item btn-accent">Search</button>
-            </div>
-          </div>
-          <div class="flex gap-3">
-            <div class="flex flex-col justify-between">
-              <div role="alert" class="alert">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  class="stroke-info h-6 w-6 shrink-0"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                <span>12 unread messages. Tap to see.</span>
-              </div>
-              <div role="alert" class="alert alert-info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  class="h-6 w-6 shrink-0 stroke-current"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                <span>New software update available.</span>
-              </div>
-              <div role="alert" class="alert alert-success">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 shrink-0 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Your purchase has been confirmed!</span>
-              </div>
-              <div role="alert" class="alert alert-warning">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 shrink-0 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  />
-                </svg>
-                <span>Warning: Invalid email address!</span>
-              </div>
-              <div role="alert" class="alert alert-error">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 shrink-0 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Error! Task failed successfully.</span>
-              </div>
-            </div>
-            <div class="flex flex-col justify-between">
-              <div role="alert" class="alert alert-soft">
-                <span>12 unread messages. Tap to see.</span>
-              </div>
-              <div role="alert" class="alert alert-info alert-soft">
-                <span>New software update available.</span>
-              </div>
-              <div role="alert" class="alert alert-success alert-soft">
-                <span>Your purchase has been confirmed!</span>
-              </div>
-              <div role="alert" class="alert alert-warning alert-soft">
-                <span>Warning: Invalid email address!</span>
-              </div>
-              <div role="alert" class="alert alert-error alert-soft">
-                <span>Error! Task failed successfully.</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

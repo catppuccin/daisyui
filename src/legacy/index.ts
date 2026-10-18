@@ -38,9 +38,9 @@ const themeKeys = [
 
 const defaultColorOptions: ColorOptions = {
   primary: 'lavender',
-  secondary: 'surface0',
+  secondary: 'surface2',
   accent: 'rosewater',
-  neutral: 'overlay1',
+  neutral: 'surface1',
   success: 'green',
   warning: 'yellow',
   error: 'red',
