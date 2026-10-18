@@ -13,9 +13,14 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "types": "./dist/jsPlugin.d.ts",
+      "import": "./dist/jsPlugin.mjs",
+      "require": "./dist/jsPlugin.cjs"
+    },
+    "./themes": {
+      "types": "./dist/cssPlugin.d.ts",
+      "import": "./dist/cssPlugin.mjs",
+      "require": "./dist/cssPlugin.cjs"
     },
     "./legacy": {
       "types": "./dist/legacy/index.d.ts",
@@ -23,7 +28,7 @@
       "require": "./dist/legacy/index.cjs"
     }
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/jsPlugin.d.ts",
   "browser": "./themes.css",
   "files": [
     "./frappe.css",
@@ -34,7 +39,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild && pnpx jiti ./src/generate.ts",
+    "build": "unbuild && pnpx jiti ./scripts/generate.ts",
     "dev": "unbuild --stub",
     "dev:example": "pnpm -F example dev",
     "lint:fix": "eslint . --fix",

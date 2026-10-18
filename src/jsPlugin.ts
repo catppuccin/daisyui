@@ -1,11 +1,10 @@
-import type Plugin from 'tailwindcss/plugin'
 import type { AccentName, CustomThemeOptions, FlavorName, MonochromaticName, Theme } from './generateTheme'
 
 import daisyThemePlugin from 'daisyui/theme'
 import plugin from 'tailwindcss/plugin'
 import { generateTheme } from './generateTheme'
 
-type WithOptionsType = ReturnType<typeof Plugin.withOptions>
+type WithOptionsType = ReturnType<typeof plugin.withOptions>
 
 interface DaisyOptions {
   default?: boolean
@@ -28,12 +27,12 @@ function createCatppuccinPlugin(themeName: FlavorName, options?: CustomThemeOpti
   }
 
   return plugin.withOptions(() => {
-    return (PluginAPI) => {
+    return (pluginAPI) => {
       daisyThemePlugin({
         name: themeName,
         ...daisyOptions,
         ...theme,
-      }).handler(PluginAPI)
+      }).handler(pluginAPI)
     }
   })
 }

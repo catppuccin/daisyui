@@ -2,7 +2,12 @@
 @plugin "daisyui" {
   themes: false;
 }
-@plugin "./catppuccinTheme.latte.ts";
+
+@plugin '@catppuccin/daisyui/themes' {
+  default: latte;
+  accent: mauve;
+  disable: frappe, mocha;
+}
+
 @plugin "./catppuccinTheme.frappe.ts";
-@plugin "./catppuccinTheme.macchiato.ts";
-@plugin "./catppuccinTheme.mocha.ts";
+@plugin "./catppuccinTheme.mocha.ts"; 

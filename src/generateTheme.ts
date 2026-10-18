@@ -1,6 +1,8 @@
 import type { AccentName, ColorName, FlavorName, MonochromaticName } from '@catppuccin/palette'
 import { flavors } from '@catppuccin/palette'
 
+export const flavorNames = ['latte', 'frappe', 'macchiato', 'mocha'] satisfies FlavorName[]
+
 interface ColorOptions {
   'primary': AccentName
   'primary-content': MonochromaticName
@@ -39,15 +41,10 @@ interface OtherOptions {
   '--noise': boolean
 }
 
-type Theme = {
-  [key in `--color-${keyof ColorOptions}`]: string
-} & {
-  [key in keyof OtherOptions]: string
-} & {
+type Theme = Record<`--color-${keyof ColorOptions}` | keyof OtherOptions, string> & {
   'color-scheme': 'dark' | 'light'
-  '--noise': string
-  '--depth': string
 }
+
 type ThemeOptions = ColorOptions & OtherOptions
 
 const defaultThemeOption: ThemeOptions = {
@@ -87,26 +84,24 @@ export function generateTheme(themeName: FlavorName, themeOptions: CustomThemeOp
   const options = {
     ...defaultThemeOption,
     ...themeOptions,
-  } as ThemeOptions
+  } satisfies ThemeOptions
 
   const entries = Object.entries(options)
-  const theme = {
+  const theme: Record<string, string> = {
     'color-scheme': flavors[themeName].dark ? 'dark' : 'light',
-    ...Object.fromEntries(entries.filter(([k]) => k.startsWith('--'))) as Record<`${keyof OtherOptions}`, string>,
-    ...(entries
-      .filter(([_, v]) => typeof v === 'boolean') as ['--noise' | '--depth', boolean][])
-      .reduce((acc, [key, value]) => {
-        acc[key] = value ? '1' : '0'
-        return acc
-      }, {} as Pick<Theme, '--noise' | '--depth'>),
-    ...(entries
-      .filter(([k]) => !k.startsWith('--')) as [keyof ColorOptions, ColorName][])
-      .reduce((acc, [key, value]) => {
-        acc[`--color-${key}`] = flavors[themeName].colors[value].hex
-        return acc
-      }, {} as Pick<Theme, `--color-${keyof ColorOptions}`>),
-  } as Theme
-  return theme
+  }
+
+  for (const [key, value] of entries) {
+    if (!key.startsWith('--')) {
+      const { l, c, h } = flavors[themeName].colors[value as ColorName].oklch
+      theme[`--color-${key}`] = `oklch(${l} ${c} ${h})`
+    }
+    else {
+      theme[key] = typeof value === 'boolean' ? (value ? '1' : '0') : value
+    }
+  }
+
+  return theme as Theme
 }
 
 export type { CustomThemeOptions, Theme }
