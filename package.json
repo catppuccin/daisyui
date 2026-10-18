@@ -13,9 +13,9 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/jsPlugin.d.ts",
-      "import": "./dist/jsPlugin.mjs",
-      "require": "./dist/jsPlugin.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./themes": {
       "types": "./dist/cssPlugin.d.ts",
@@ -28,7 +28,7 @@
       "require": "./dist/legacy/index.cjs"
     }
   },
-  "types": "./dist/jsPlugin.d.ts",
+  "types": "./dist/index.d.ts",
   "browser": "./themes.css",
   "files": [
     "./frappe.css",
