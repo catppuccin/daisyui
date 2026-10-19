@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/catppuccin/daisyui/compare/v2.1.1...v2.2.0) (2026-10-19)
+
+
+### Features
+
+* enhance themes plugin and upgrade dependencies ([#83](https://github.com/catppuccin/daisyui/issues/83)) ([90e3fd4](https://github.com/catppuccin/daisyui/commit/90e3fd44c940eb7674f9fb6dc43e0764fe53daf4))
+
 ## [2.1.1](https://github.com/catppuccin/daisyui/compare/v2.1.0...v2.1.1) (2025-04-21)
 
 
