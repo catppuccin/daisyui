@@ -1,14 +1,11 @@
-import type { FlavorName } from './generateTheme'
 import { appendFile } from 'node:fs/promises'
-import { generateTheme } from './generateTheme'
-
-const flavorNames = ['latte', 'frappe', 'macchiato', 'mocha'] as FlavorName[]
+import { flavorNames, generateTheme } from '../src/generateTheme'
 
 const themeCSSs = flavorNames.map(f =>
   `:root:has(input.theme-controller[value=${f}]:checked),[data-theme="${f}"]${JSON.stringify(generateTheme(f)).replace(/"/g, '').replace(/,/g, ';')}`,
 )
 
-Promise.all(
+await Promise.all(
   [
     ...themeCSSs.map((themeCSS, i) => {
       const flavorName = flavorNames[i]

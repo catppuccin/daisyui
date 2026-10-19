@@ -7,6 +7,7 @@ export default defineBuildConfig({
   entries: [
     'src/legacy/index',
     'src/index',
+    'src/cssPlugin'
   ],
   rollup: {
     emitCJS: true,

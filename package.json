@@ -2,7 +2,7 @@
   "name": "@catppuccin/daisyui",
   "type": "module",
   "version": "2.1.1",
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@12.14.0",
   "description": "🌼 Soothing pastel theme for daisyui",
   "author": "lime <liumingxun@yeah.net>",
   "license": "MIT",
@@ -16,6 +16,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./themes": {
+      "types": "./dist/cssPlugin.d.ts",
+      "import": "./dist/cssPlugin.mjs",
+      "require": "./dist/cssPlugin.cjs"
     },
     "./legacy": {
       "types": "./dist/legacy/index.d.ts",
@@ -34,7 +39,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild && pnpx jiti ./src/generate.ts",
+    "build": "unbuild && pnpx jiti ./scripts/generate.ts",
     "dev": "unbuild --stub",
     "dev:example": "pnpm -F example dev",
     "lint:fix": "eslint . --fix",
@@ -46,15 +51,15 @@
     "tailwindcss": "^4.0.17"
   },
   "dependencies": {
-    "@catppuccin/palette": "^1.7.1"
+    "@catppuccin/palette": "^1.8.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.11.0",
-    "@types/node": "^20",
-    "daisyui": "^5.0.9",
-    "eslint": "^9.23.0",
-    "eslint-plugin-format": "^1.0.1",
-    "typescript": "^5.8.2",
+    "@antfu/eslint-config": "^9.5.1",
+    "@types/node": "^26",
+    "daisyui": "^5.7.50",
+    "eslint": "^10.4.0",
+    "eslint-plugin-format": "^2.0.1",
+    "typescript": "^6",
     "unbuild": "^3.5.0"
   }
 }

@@ -2,11 +2,11 @@ import { createCatppuccinPlugin } from '@catppuccin/daisyui'
 
 export default createCatppuccinPlugin('macchiato', {
   'primary': 'lavender',
-  'primary-content': 'mantle',
+  'primary-content': 'base',
   'secondary': 'surface0',
   'secondary-content': 'text',
   'accent': 'rosewater',
-  'accent-content': 'mantle',
-  'neutral': 'overlay1',
-  'neutral-content': 'mantle',
+  'accent-content': 'base',
+  'neutral': 'surface1',
+  'neutral-content': 'text',
 })
