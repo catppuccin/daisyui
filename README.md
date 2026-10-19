@@ -12,26 +12,26 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/preview.webp"/>
+  <img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/preview.png"/>
 </p>
 
 ## Previews
 
 <details>
 <summary>🌻 Latte</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/latte.webp"/>
+<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/latte.png"/>
 </details>
 <details>
 <summary>🪴 Frappé</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/frappe.webp"/>
+<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/frappe.png"/>
 </details>
 <details>
 <summary>🌺 Macchiato</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/macchiato.webp"/>
+<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/macchiato.png"/>
 </details>
 <details>
 <summary>🌿 Mocha</summary>
-<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/mocha.webp"/>
+<img src="https://raw.githubusercontent.com/catppuccin/daisyui/main/assets/previews/mocha.png"/>
 </details>
 
 ## Usage
@@ -46,7 +46,32 @@
 
 0. Follow the installation instructions for [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) and [daisyUI](https://daisyui.com/docs/install/)
 
-1. Create a separate file like `catppuccinTheme.latte.ts` and import `@catppuccin/daisyui`
+1. Add the plugin to your Tailwind CSS file:
+
+   ```css
+   @import 'tailwindcss';
+   @plugin 'daisyui';
+
+   @plugin '@catppuccin/daisyui/themes';
+   ```
+
+   Done! `latte` is now your default color scheme, and every flavor is registered with daisyUI. For more control, configure the plugin as follows:
+
+   ```css
+   @plugin '@catppuccin/daisyui/themes' {
+     /* the default flavor */
+     default: latte;
+     /* accent color applied to every flavor; pick a name from
+       https://github.com/catppuccin/palette/blob/07d02aa110ef9eb7e7427afca5c73ba9cf7f8ebd/mod.ts#L18-L32 */
+     accent: mauve;
+     /* flavors to skip */
+     disable: frappe, mocha;
+   }
+   ```
+
+For finer-grained control, you can use the JavaScript plugin, which requires creating a separate file and importing it as a plugin.
+
+1. Create a separate file such as `catppuccinTheme.latte.ts` and import `@catppuccin/daisyui`
 
    ```javascript
    import { createCatppuccinPlugin } from '@catppuccin/daisyui'
@@ -54,15 +79,13 @@
    export default createCatppuccinPlugin('latte')
    ```
 
-   You can view available values through your editor's type hints. Check [example](https://github.com/catppuccin/daisyui/tree/main/example/src) and [source code](https://github.com/catppuccin/daisyui/blob/249cc7fde53ebc53ad26e932619b1567513faaea/src/index.ts#L10-L18) for additional details.
+   Your editor's type hints list the available values. See the [example](https://github.com/catppuccin/daisyui/tree/main/example/src) and [source code](https://github.com/catppuccin/daisyui/blob/3184a71fccd40884b6a732758e53f343a3096e59/src/jsPlugin.ts#L10-L18) for details.
 
-2. Import the created file in your CSS configuration file
+2. Import the files you created in your CSS configuration:
 
    ```css
    @import 'tailwindcss';
-   @plugin "daisyui" {
-     themes: false;
-   }
+   @plugin 'daisyui';
 
    @plugin "./catppuccinTheme.latte.ts";
    @plugin "./catppuccinTheme.frappe.ts";
@@ -70,12 +93,30 @@
    @plugin "./catppuccinTheme.mocha.ts";
    ```
 
+You can also mix both approaches:
+
+```css
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes: false;
+}
+
+@plugin '@catppuccin/daisyui/themes' {
+  default: latte;
+  accent: mauve;
+  disable: frappe, mocha;
+}
+
+@plugin "./catppuccinTheme.frappe.ts";
+@plugin "./catppuccinTheme.mocha.ts";
+```
+
 > [!TIP]
-> For daisyUI v4, you can import required functions from `@catppuccin/daisyui/legacy`. For specific usage, refer to the [previous guide](https://github.com/catppuccin/daisyui/blob/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8/README.md).
+> For daisyUI v4, import the required functions from `@catppuccin/daisyui/legacy`. See the [previous guide](https://github.com/catppuccin/daisyui/blob/c03cb0e6eafc3d20c9d85c38a671a937d93a64c8/README.md) for usage details.
 
 #### For CDN
 
-Inspired by the CDN usage of daisyUI, I have separated each theme, allowing you to independently import a single theme or combine the themes you need. See:
+Inspired by daisyUI's CDN usage, each theme ships as a separate file, so you can import a single flavor or combine the ones you need:
 
 ```html
 <!-- some? -->
@@ -101,7 +142,7 @@ Inspired by the CDN usage of daisyUI, I have separated each theme, allowing you 
 
 ### Example
 
-You can use the following HTML to test the theme:
+Use the following HTML to try the theme:
 
 ```html
 <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-9">
@@ -117,13 +158,13 @@ You can use the following HTML to test the theme:
 </div>
 ```
 
-You can find the example in the `example` folder.
+A full example lives in the `example` folder.
 
 ### FAQ
 
-#### Themes are not working, I get the wireframe
+#### Themes are not working and I get the wireframe
 
-- Try to add a `default: true` declaration in the final options parameter when using `createCatppuccinPlugin`, like this:
+- Add `default: true` to the final options argument of `createCatppuccinPlugin`:
 
 ```ts
 export default createCatppuccinPlugin('latte', {}, {
@@ -131,12 +172,12 @@ export default createCatppuccinPlugin('latte', {}, {
 })
 ```
 
-- Or you can add an **active** theme controller, such as one matched by the selector `input.toggle.theme-controller[type="checkbox"]:checked`.
-- Or you can either add `data-theme="latte"` to the root HTML element for global configuration, or use another client-side framework to control this attribute.
+- Alternatively, add an **active** theme controller, for example one matched by the selector `input.toggle.theme-controller[type="checkbox"]:checked`.
+- Alternatively, set `data-theme="latte"` on the root HTML element to configure it globally, or let a client-side framework manage the attribute.
 
 #### Do I have to disable all themes from daisyUI?
 
-No, but you should still use the `createCatppuccinPlugin` option to control the default theme.
+No, but when using the JavaScript plugin you should still set the default theme through the `createCatppuccinPlugin` options; the CSS plugin handles this for you.
 
 ## 💝 Thanks to
 
