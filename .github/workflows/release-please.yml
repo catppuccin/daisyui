@@ -7,6 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  id-token: write
   contents: write
   pull-requests: write
 
@@ -30,14 +31,13 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: lts/*
+          node-version: 26
+          registry-url: https://registry.npmjs.org
 
-      - uses: pnpm/action-setup@v4
-        with:
-          run_install: true
+      - uses: pnpm/action-setup@v7
 
-      - run: pnpm run build
+      - run: pnpm install --frozen-lockfile
 
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
