@@ -59,7 +59,7 @@
     "daisyui": "^5.7.50",
     "eslint": "^10.4.0",
     "eslint-plugin-format": "^2.0.1",
-    "typescript": "^6",
+    "typescript": "^7.0.0",
     "unbuild": "^3.5.0"
   }
 }

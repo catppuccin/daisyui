@@ -13,7 +13,7 @@
     "@tailwindcss/vite": "^4.0.17",
     "daisyui": "^5.7.50",
     "tailwindcss": "^4.0.17",
-    "typescript": "^6",
+    "typescript": "^7.0.0",
     "vite": "^6.2.0"
   }
 }
